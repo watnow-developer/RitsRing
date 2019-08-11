@@ -61,7 +61,8 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
  }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        /*online か offline かチェック
+            */
         //cell タップ
         switch(indexPath.row){
         case 0: let controller0 = talkUnableController()

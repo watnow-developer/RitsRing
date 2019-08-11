@@ -26,7 +26,11 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         configureNavigationBar()
+
     }
     
     @objc func handleMenuToggle(){

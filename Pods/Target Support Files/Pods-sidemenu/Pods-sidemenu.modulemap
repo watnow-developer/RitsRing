@@ -1,0 +1,6 @@
+framework module Pods_sidemenu {
+  umbrella header "Pods-sidemenu-umbrella.h"
+
+  export *
+  module * { export * }
+}
