@@ -99,7 +99,8 @@ class ContainerController: UIViewController {
         switch menuOption{
             
         case .profile:
-            print("show profile")
+            let controller2 = MyprofileViewController()
+            present(UINavigationController(rootViewController: controller2),animated: true , completion: nil)
         case .friend:
             let controller = friendlistController()
             present(UINavigationController(rootViewController: controller),animated: true , completion: nil)

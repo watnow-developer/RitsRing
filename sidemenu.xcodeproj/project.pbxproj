@@ -24,6 +24,15 @@
 		589C897822FFEB03002CCC95 /* chatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C897722FFEB03002CCC95 /* chatController.swift */; };
 		589C897A22FFEB42002CCC95 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C897922FFEB42002CCC95 /* ChatMessageCell.swift */; };
 		589C898422FFFB2F002CCC95 /* CreateProfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898322FFFB2F002CCC95 /* CreateProfVC.swift */; };
+		589C898723000902002CCC95 /* PassCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898523000902002CCC95 /* PassCodeVC.swift */; };
+		589C898823000902002CCC95 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898623000902002CCC95 /* LoginVC.swift */; };
+		589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898923000936002CCC95 /* SelectFriendVC.swift */; };
+		589C898C23000942002CCC95 /* NoSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898B23000942002CCC95 /* NoSelectVC.swift */; };
+		589C898E2300094B002CCC95 /* yesSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898D2300094B002CCC95 /* yesSelectVC.swift */; };
+		589C8991230009C2002CCC95 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8990230009C1002CCC95 /* FriendProfileVC.swift */; };
+		589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */; };
+		589C899723000A47002CCC95 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899623000A47002CCC95 /* ProfileVC.swift */; };
+		589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899823000B3C002CCC95 /* pickerProfileController.swift */; };
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +78,15 @@
 		589C897722FFEB03002CCC95 /* chatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 		589C897922FFEB42002CCC95 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		589C898322FFFB2F002CCC95 /* CreateProfVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfVC.swift; sourceTree = "<group>"; };
+		589C898523000902002CCC95 /* PassCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassCodeVC.swift; path = "takitouのコピー/PassCodeVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C898623000902002CCC95 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = "takitouのコピー/LoginVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C898923000936002CCC95 /* SelectFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendVC.swift; path = "takitouのコピー/SelectFriendVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C898B23000942002CCC95 /* NoSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoSelectVC.swift; path = "takitouのコピー/NoSelectVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C898D2300094B002CCC95 /* yesSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = yesSelectVC.swift; path = "takitouのコピー/yesSelectVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C8990230009C1002CCC95 /* FriendProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendProfileVC.swift; path = sidemenu/select/profile/FriendProfileVC.swift; sourceTree = SOURCE_ROOT; };
+		589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextInputTableViewCell.swift; path = sidemenu/select/profile/TextInputTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		589C899623000A47002CCC95 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = "takitouのコピー/ProfileVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C899823000B3C002CCC95 /* pickerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerProfileController.swift; sourceTree = "<group>"; };
 		58A44C3722FBE4EC00C5C961 /* friendlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendlistController.swift; sourceTree = "<group>"; };
 		58A44C3A22FDE56200C5C961 /* talkUnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkUnable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,7 +179,6 @@
 				585FCA4622F5AB1000302460 /* ContainerController.swift */,
 				585FCA4822F5AB4C00302460 /* HomeController.swift */,
 				585FCA4A22F5AB6500302460 /* MenuController.swift */,
-				58A44C3722FBE4EC00C5C961 /* friendlistController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -203,8 +220,29 @@
 			isa = PBXGroup;
 			children = (
 				589C898322FFFB2F002CCC95 /* CreateProfVC.swift */,
+				589C899823000B3C002CCC95 /* pickerProfileController.swift */,
+				589C898623000902002CCC95 /* LoginVC.swift */,
+				589C898523000902002CCC95 /* PassCodeVC.swift */,
 			);
 			path = firstSetting;
+			sourceTree = "<group>";
+		};
+		589C898F2300097D002CCC95 /* friendlist */ = {
+			isa = PBXGroup;
+			children = (
+				58A44C3722FBE4EC00C5C961 /* friendlistController.swift */,
+				589C899623000A47002CCC95 /* ProfileVC.swift */,
+			);
+			path = friendlist;
+			sourceTree = "<group>";
+		};
+		589C899523000A0C002CCC95 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				589C8990230009C1002CCC95 /* FriendProfileVC.swift */,
+				589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */,
+			);
+			path = profile;
 			sourceTree = "<group>";
 		};
 		58A44C3922FDE43200C5C961 /* select */ = {
@@ -213,6 +251,11 @@
 				58A44C3A22FDE56200C5C961 /* talkUnable.swift */,
 				585E156022FE086100190A7D /* genderSelectController.swift */,
 				585E156222FE7F9A00190A7D /* matchOkController.swift */,
+				589C898923000936002CCC95 /* SelectFriendVC.swift */,
+				589C898B23000942002CCC95 /* NoSelectVC.swift */,
+				589C898D2300094B002CCC95 /* yesSelectVC.swift */,
+				589C899523000A0C002CCC95 /* profile */,
+				589C898F2300097D002CCC95 /* friendlist */,
 			);
 			path = select;
 			sourceTree = "<group>";
@@ -350,17 +393,26 @@
 			files = (
 				585FCA4B22F5AB6500302460 /* MenuController.swift in Sources */,
 				588BBA2D22FB07D60026FDA8 /* menuOption.swift in Sources */,
+				589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */,
 				585FCA4922F5AB4C00302460 /* HomeController.swift in Sources */,
 				585FCA4722F5AB1000302460 /* ContainerController.swift in Sources */,
 				58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */,
 				588BB9E522F5E1670026FDA8 /* Protocols.swift in Sources */,
 				589C897A22FFEB42002CCC95 /* ChatMessageCell.swift in Sources */,
+				589C898C23000942002CCC95 /* NoSelectVC.swift in Sources */,
 				585E156322FE7F9A00190A7D /* matchOkController.swift in Sources */,
+				589C898E2300094B002CCC95 /* yesSelectVC.swift in Sources */,
+				589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */,
 				58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */,
+				589C898723000902002CCC95 /* PassCodeVC.swift in Sources */,
+				589C898823000902002CCC95 /* LoginVC.swift in Sources */,
 				585FCA1522F5AA0200302460 /* AppDelegate.swift in Sources */,
+				589C8991230009C2002CCC95 /* FriendProfileVC.swift in Sources */,
 				585E156122FE086100190A7D /* genderSelectController.swift in Sources */,
 				588BB9E722F67F680026FDA8 /* MenuOptionCell.swift in Sources */,
 				589C898422FFFB2F002CCC95 /* CreateProfVC.swift in Sources */,
+				589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */,
+				589C899723000A47002CCC95 /* ProfileVC.swift in Sources */,
 				589C897822FFEB03002CCC95 /* chatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -56,7 +56,7 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-    let controller = HomeController()
+    let controller = ViewController()
     present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
  }
     
@@ -66,7 +66,7 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         switch(indexPath.row){
         case 0: let controller0 = talkUnableController()
         self.present(UINavigationController(rootViewController: controller0),animated: true , completion: nil)
-        case 1:let controller1 = ContainerController()
+        case 1:let controller1 = chatController()
         self.present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
         default:
             break

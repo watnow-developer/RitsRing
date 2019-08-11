@@ -53,10 +53,12 @@ class chatController : UITableViewController{
         
         
         //Navigation Controller setting
-        navigationItem.title = "RiRi Chat"
+            navigationItem.title = "RiRi Chat"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         navigationController?.navigationBar.barStyle = .black
+        
+        
         
         //tableView setting
         tableView.register(ChatMessageCell.self, forCellReuseIdentifier: cellId)

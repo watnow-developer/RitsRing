@@ -9,8 +9,7 @@
 import UIKit
 
 
-class CreateProfileViewController: UIViewController {
-    
+class ViewController: UIViewController {
     
    
 
@@ -57,6 +56,8 @@ class CreateProfileViewController: UIViewController {
         gobutton.setTitleColor(.white, for: .normal)
         gobutton.layer.cornerRadius = 20
         self.view.addSubview(gobutton)
+        //gobutton.addTarget(self, action: #selector(ViewController.tapbutton(_ :)), for: .touchUpInside)
+      
         
         
         let warninglabel:UILabel = UILabel(frame:CGRect(x: 0, y: 800, width: self.view.frame.width, height: 50))
@@ -65,21 +66,12 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(warninglabel)
         
         // Do any additional setup after loading the view.
-}
-
-
-@objc func goNext(_ sender:UIButton){
-    let CFcontroller = pickerProfileViewController()
-    self.present(UINavigationController(rootViewController: CFcontroller), animated: true ,completion: nil)
-    
-}
-
-
+    }
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
 
 }
-
 
