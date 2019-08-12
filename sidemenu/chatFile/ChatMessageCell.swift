@@ -33,6 +33,7 @@ class ChatMessageCell: UITableViewCell {
             }
         }
     }
+
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

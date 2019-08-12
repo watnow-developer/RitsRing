@@ -30,27 +30,39 @@ class chatController : UITableViewController{
     //true 左　false 右
     
     
-    
-    let chatMessages = [
-        [
-            ChatMessage(text: "here's my first message", isIncoming: true , date: Date.dateFromCustomStirng(customString: "08/11/2019")),
-            ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: true, date: Date.dateFromCustomStirng(customString: "08/10/2019 ")),
-        ],
-        [
-            ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: false, date: Date()),
-            ChatMessage(text: "abc", isIncoming: false, date: Date()),
-            ChatMessage(text: "this message should appear in the left", isIncoming: true, date: Date()),
-            
-            ],
-        [
-            ChatMessage(text: "Third section message" , isIncoming: true, date: Date())
-        ]
-        
+
+    let messagesFromServer = [
+        ChatMessage(text: "here's my first message", isIncoming: true , date: Date.dateFromCustomStirng(customString: "08/11/2019")),
+        ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: true, date: Date.dateFromCustomStirng(customString: "08/10/2019 ")),
+        ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: false, date: Date()),
+        ChatMessage(text: "abc", isIncoming: false, date: Date()),
+        ChatMessage(text: "this message should appear in the left", isIncoming: true, date: Date()),
+        ChatMessage(text: "Third section message", isIncoming: true, date: Date())
     ]
+    
+    fileprivate func attemptToAssembleGroupedMessages() {
+        print("Attempt to group our messages together based on Date property")
+        
+        //????
+        let groupedMessages = Dictionary(grouping: messagesFromServer) { (element) -> Date in
+            return element.date
+        }
+        
+        //provide a sorting for your keys somehow
+        let sortedKeys = groupedMessages.keys.sorted()
+        sortedKeys.forEach { (key) in
+            let values = groupedMessages[key]
+            chatMessages.append(values ?? [] )
+        }
+
+    }
+    
+    var chatMessages = [[ChatMessage]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        attemptToAssembleGroupedMessages()
         
         //Navigation Controller setting
             navigationItem.title = "RiRi Chat"
