@@ -44,6 +44,9 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
         
         view.addSubview(headerview)
         
+        //追加
+             configureUI()
+        
         
         // Do any additional setup after loading the view.
     }
@@ -86,9 +89,32 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
         return cell
     }
     
+
+    //追加
+    
+//Selectors
+@objc func handleDismiss(){
+    dismiss(animated: true, completion: nil)
+}
+
+
+
+//navigation bar
+
+func configureUI(){
+    navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
+    navigationItem.title = "〇〇Profile"
+    navigationController?.navigationBar.barStyle = .black
+    
+    //withRenderingMode(.alwaysOriginal)することによって元の色を保つ
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
+    
+    //ここまで↑
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
 }
 
