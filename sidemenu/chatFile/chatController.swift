@@ -76,6 +76,8 @@ class chatController : UITableViewController{
         tableView.register(ChatMessageCell.self, forCellReuseIdentifier: cellId)
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        
+        configureUI()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,6 +149,19 @@ class chatController : UITableViewController{
         let chatMessage  = chatMessages[indexPath.section][indexPath.row]
         cell.chatMessage = chatMessage
         return cell
+    }
+    //Selectors
+    @objc func handleDismiss(){
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func configureUI(){
+        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
+        
+        
     }
     
     
