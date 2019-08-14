@@ -9,6 +9,8 @@
 import UIKit
 
 class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+    
+    
     //section1の文字配列
     let rowtext:[String] = ["性別","学部", "学科", "入学年度"]
     
