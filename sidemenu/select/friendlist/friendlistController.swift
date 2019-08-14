@@ -63,7 +63,15 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /*online か offline かチェック
             */
-        //cell タップ
+        if(indexPath.section == 0 ){
+            let controller1 = chatController()
+            self.present(UINavigationController(rootViewController: controller1), animated: true ,completion: nil)
+        }else if(indexPath.section == 1){
+            let controller0 = talkUnableController()
+            self.present(UINavigationController(rootViewController: controller0), animated: true ,completion: nil)
+        }
+    }
+       /*
         switch(indexPath.row){
         case 0: let controller0 = talkUnableController()
         self.present(UINavigationController(rootViewController: controller0),animated: true , completion: nil)
@@ -72,13 +80,7 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         default:
             break
         }
-    
-        
-        
-    }
-    
-    
-    
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
         
