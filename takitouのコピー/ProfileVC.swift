@@ -25,7 +25,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     var headerview:UIImageView = {
         
         var headerview = UIImageView()
-        let imageview = UIImage(named: "people")
+        let imageview = UIImage(named: "profile")
         let screenwidth = UIScreen.main.bounds.width/4
         let screenheight = UIScreen.main.bounds.width/4
         headerview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width/7*5, y: screenheight, width: screenwidth, height: screenwidth))

@@ -18,6 +18,7 @@ class yesselectedview: UIViewController {
         view.center = CGPoint(x: 200, y: 200)
         view.text = "フレンド成立"
         return view
+        
     }()
     
     let namelabel: UITextField = {

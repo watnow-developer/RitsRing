@@ -26,7 +26,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     var headerview:UIImageView = {
         
         var headerview = UIImageView()
-        let imageview = UIImage(named: "yjimageのコピー")
+        let imageview = UIImage(named: "profile")
         let screenwidth = UIScreen.main.bounds.width/4
         let screenheight = UIScreen.main.bounds.width/4
         headerview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width/7*5, y: screenheight, width: screenwidth, height: screenwidth))
@@ -49,8 +49,52 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         configureUI()
         
+        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
+        headerview.isUserInteractionEnabled = true
+        headerview.addGestureRecognizer(tapview)
         // Do any additional setup after loading the view.
     }
+
+    
+    @objc fileprivate func imageTapped(){
+        // アルバム(Photo liblary)の閲覧権限の確認
+        checkPermission()
+        
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            print("present Start")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func checkPermission(){
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("auth")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("not Determined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        @unknown default:
+            break
+        }
+    }
+    
     
     func configureUI(){
         view.backgroundColor = .white
