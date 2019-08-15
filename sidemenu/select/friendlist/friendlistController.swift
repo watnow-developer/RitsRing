@@ -63,7 +63,6 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /*online か offline かチェック
             */
-<<<<<<< HEAD
         //cell タップ
         if(indexPath.section == 0 ){
             let controller0 = chatController()
@@ -71,26 +70,10 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         }else if(indexPath.section == 1){
             let controller1 = talkUnableController()
             self.present(UINavigationController(rootViewController: controller1), animated: true ,completion: nil)
-=======
-        if(indexPath.section == 0 ){
-            let controller1 = chatController()
-            self.present(UINavigationController(rootViewController: controller1), animated: true ,completion: nil)
-        }else if(indexPath.section == 1){
-            let controller0 = talkUnableController()
-            self.present(UINavigationController(rootViewController: controller0), animated: true ,completion: nil)
+
         }
     }
-       /*
-        switch(indexPath.row){
-        case 0: let controller0 = talkUnableController()
-        self.present(UINavigationController(rootViewController: controller0),animated: true , completion: nil)
-        case 1:let controller1 = chatController()
-        self.present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
-        default:
-            break
->>>>>>> e8c8c0b9d31a5e329f49ba2787bc9b18ab7b5c54
-        }
-    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -150,31 +150,19 @@ class chatController : UITableViewController{
         cell.chatMessage = chatMessage
         return cell
     }
-<<<<<<< HEAD
-    //mainに戻る動作
+    //メインに戻る動作
     @objc func backMain(){
         let NextController = friendlistController()
-=======
-    
-    //Selectors
-    @objc func handleDismiss(){
-        let NextController = SelectFriendViewController()
->>>>>>> e8c8c0b9d31a5e329f49ba2787bc9b18ab7b5c54
         self.present(NextController, animated: true ,completion: nil)
     }
     
     
     func configureUI(){
-<<<<<<< HEAD
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
         
-=======
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss))
->>>>>>> e8c8c0b9d31a5e329f49ba2787bc9b18ab7b5c54
-    }
-    
     
 }
 
+}

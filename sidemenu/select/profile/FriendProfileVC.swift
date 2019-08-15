@@ -94,7 +94,11 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
             break
         }
     }
-    
+
+
+@objc func handleDismiss(){
+    dismiss(animated: true, completion: nil)
+}
     
     func configureUI(){
         view.backgroundColor = .white
@@ -104,10 +108,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         //withRenderingMode(.alwaysOriginal)することによって元の色を保つ
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
     }
-    
-    @objc func handleDismiss(){
-        dismiss(animated: true, completion: nil)
-    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
