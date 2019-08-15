@@ -150,18 +150,16 @@ class chatController : UITableViewController{
         cell.chatMessage = chatMessage
         return cell
     }
+    
     //Selectors
     @objc func handleDismiss(){
-        dismiss(animated: true, completion: nil)
+        let NextController = SelectFriendViewController()
+        self.present(NextController, animated: true ,completion: nil)
     }
     
     
     func configureUI(){
-        
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
-        
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss))
     }
     
     
