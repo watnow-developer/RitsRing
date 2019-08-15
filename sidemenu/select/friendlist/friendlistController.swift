@@ -64,13 +64,12 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         /*online か offline かチェック
             */
         //cell タップ
-        switch(indexPath.row){
-        case 0: let controller0 = talkUnableController()
-        self.present(UINavigationController(rootViewController: controller0),animated: true , completion: nil)
-        case 1:let controller1 = chatController()
-        self.present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
-        default:
-            break
+        if(indexPath.section == 0 ){
+            let controller0 = chatController()
+            self.present(UINavigationController(rootViewController: controller0), animated: true ,completion: nil)
+        }else if(indexPath.section == 1){
+            let controller1 = talkUnableController()
+            self.present(UINavigationController(rootViewController: controller1), animated: true ,completion: nil)
         }
     
         

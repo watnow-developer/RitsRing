@@ -1,4 +1,4 @@
-//
+///
 //  chatController.swift
 //  sidemenu
 //
@@ -30,7 +30,7 @@ class chatController : UITableViewController{
     //true 左　false 右
     
     
-
+    
     let messagesFromServer = [
         ChatMessage(text: "here's my first message", isIncoming: true , date: Date.dateFromCustomStirng(customString: "08/11/2019")),
         ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: true, date: Date.dateFromCustomStirng(customString: "08/10/2019 ")),
@@ -54,7 +54,7 @@ class chatController : UITableViewController{
             let values = groupedMessages[key]
             chatMessages.append(values ?? [] )
         }
-
+        
     }
     
     var chatMessages = [[ChatMessage]]()
@@ -65,7 +65,7 @@ class chatController : UITableViewController{
         attemptToAssembleGroupedMessages()
         
         //Navigation Controller setting
-            navigationItem.title = "RiRi Chat"
+        navigationItem.title = "RiRi Chat"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         navigationController?.navigationBar.barStyle = .black
@@ -150,17 +150,17 @@ class chatController : UITableViewController{
         cell.chatMessage = chatMessage
         return cell
     }
-    //Selectors
-    @objc func handleDismiss(){
-        dismiss(animated: true, completion: nil)
+    //mainに戻る動作
+    @objc func backMain(){
+        let NextController = friendlistController()
+        self.present(NextController, animated: true ,completion: nil)
     }
     
     
     func configureUI(){
         
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "logout").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
         
     }
     
