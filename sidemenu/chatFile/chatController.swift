@@ -150,9 +150,9 @@ class chatController : UITableViewController{
         cell.chatMessage = chatMessage
         return cell
     }
-    //メインに戻る動作
+    //次に行く動作
     @objc func backMain(){
-        let NextController = friendlistController()
+        let NextController = SelectFriendViewController()
         self.present(NextController, animated: true ,completion: nil)
     }
     
