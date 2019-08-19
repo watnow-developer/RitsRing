@@ -63,7 +63,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             print("present Start")
             let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
+            imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
@@ -71,12 +71,15 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func checkPermission(){
+        
+        /***
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         
         switch photoAuthorizationStatus {
         case .authorized:
             print("auth")
         case .notDetermined:
+            
             PHPhotoLibrary.requestAuthorization({
                 (newStatus) in
                 print("status is \(newStatus)")
@@ -93,6 +96,8 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         @unknown default:
             break
         }
+        
+        ***/
     }
 
 

@@ -36,8 +36,8 @@ class CreateProfileViewController: UIViewController {
         
         
         let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-        headerview.isUserInteractionEnabled = true
-        headerview.addGestureRecognizer(tapview)
+        //headerview.isUserInteractionEnabled = true
+        //headerview.addGestureRecognizer(tapview)
         
         
         

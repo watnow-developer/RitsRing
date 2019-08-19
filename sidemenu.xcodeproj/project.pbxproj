@@ -141,7 +141,6 @@
 				DD28993C707C3DC0D2BA73DF /* Pods-sidemenuUITests.debug.xcconfig */,
 				4851ED83130FF09865B3213A /* Pods-sidemenuUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -745,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.sidemenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.yu.sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -765,7 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.sidemenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.yu.sidemenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
