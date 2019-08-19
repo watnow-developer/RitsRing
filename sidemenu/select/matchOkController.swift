@@ -32,8 +32,8 @@ class matchOkController : UIViewController{
         
         let noAction : UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel){
             action in
-            let noController = HomeController()
-            self.present(UINavigationController(rootViewController: noController), animated: true, completion: nil)
+            let NextController = ContainerController()
+            self.present(NextController, animated: true ,completion: nil)
         }
         
         matchAlert.addAction(yesAction)
