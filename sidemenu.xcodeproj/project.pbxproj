@@ -35,6 +35,7 @@
 		589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */; };
 		589C899723000A47002CCC95 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899623000A47002CCC95 /* ProfileVC.swift */; };
 		589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899823000B3C002CCC95 /* pickerProfileController.swift */; };
+		58A09CB1230AA4B20085A11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */; };
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
 		964256D3282745CA868D5CB6 /* Pods_sidemenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8490E8BDF0B3F45448B821BD /* Pods_sidemenuTests.framework */; };
@@ -93,6 +94,7 @@
 		589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextInputTableViewCell.swift; path = sidemenu/select/profile/TextInputTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		589C899623000A47002CCC95 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = "takitouのコピー/ProfileVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C899823000B3C002CCC95 /* pickerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerProfileController.swift; sourceTree = "<group>"; };
+		58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58A44C3722FBE4EC00C5C961 /* friendlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendlistController.swift; sourceTree = "<group>"; };
 		58A44C3A22FDE56200C5C961 /* talkUnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkUnable.swift; sourceTree = "<group>"; };
 		5EB1A5401BB3354A554D9CD5 /* Pods-sidemenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenu.release.xcconfig"; path = "Target Support Files/Pods-sidemenu/Pods-sidemenu.release.xcconfig"; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		585FCA0822F5AA0200302460 = {
 			isa = PBXGroup;
 			children = (
+				58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */,
 				585FCA1322F5AA0200302460 /* sidemenu */,
 				585FCA2822F5AA0500302460 /* sidemenuTests */,
 				585FCA3322F5AA0500302460 /* sidemenuUITests */,
@@ -409,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				585FCA1F22F5AA0500302460 /* LaunchScreen.storyboard in Resources */,
+				58A09CB1230AA4B20085A11B /* GoogleService-Info.plist in Resources */,
 				585FCA1C22F5AA0500302460 /* Assets.xcassets in Resources */,
 				585FCA1A22F5AA0200302460 /* Main.storyboard in Resources */,
 			);
@@ -744,7 +748,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.yu.sidemenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.watnow.ritsring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -764,7 +768,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.xmas.yu.sidemenu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.watnow.ritsring;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -5,15 +5,14 @@
 //  Created by 瀧頭　直斗 on 2019/07/09.
 //  Copyright © 2019 瀧頭　直斗. All rights reserved.
 //
-
 import UIKit
 
 
 class CreateProfileViewController: UIViewController {
     
     
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,9 +34,9 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(UserView)
         
         
-     //   let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
+        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
         //headerview.isUserInteractionEnabled = true
-        //headerview.addGestureRecognizer(tapview)
+        // headerview.addGestureRecognizer(tapview)
         
         
         
@@ -70,60 +69,59 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(warninglabel)
         
         // Do any additional setup after loading the view.
-}
-
-
-@objc func goNext(_ sender:UIButton){
-    let CFcontroller = pickerProfileViewController()
-    self.present(UINavigationController(rootViewController: CFcontroller), animated: true ,completion: nil)
+    }
     
-}
+    
+    @objc func goNext(_ sender:UIButton){
+        let CFcontroller = pickerProfileViewController()
+        self.present(UINavigationController(rootViewController: CFcontroller), animated: true ,completion: nil)
+        
+    }
     
     @objc fileprivate func imageTapped(){
         // アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            print("present Start")
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .photoLibrary
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
+        /* if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+         print("present Start")
+         let imagePicker = UIImagePickerController()
+         imagePicker.delegate = self
+         imagePicker.sourceType = .photoLibrary
+         imagePicker.allowsEditing = true
+         self.present(imagePicker, animated: true, completion: nil)
+         }*/
     }
     
     func checkPermission(){
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
-        switch photoAuthorizationStatus {
-        case .authorized:
-            print("auth")
-        case .notDetermined:
-            PHPhotoLibrary.requestAuthorization({
-                (newStatus) in
-                print("status is \(newStatus)")
-                if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
-                    print("success")
-                }
-            })
-            print("not Determined")
-        case .restricted:
-            print("restricted")
-        case .denied:
-            print("denied")
-        @unknown default:
-            break
-        }
+        /*  let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+         
+         switch photoAuthorizationStatus {
+         case .authorized:
+         print("auth")
+         case .notDetermined:
+         PHPhotoLibrary.requestAuthorization({
+         (newStatus) in
+         print("status is \(newStatus)")
+         if newStatus ==  PHAuthorizationStatus.authorized {
+         /* do stuff here */
+         print("success")
+         }
+         })
+         print("not Determined")
+         case .restricted:
+         print("restricted")
+         case .denied:
+         print("denied")
+         @unknown default:
+         break
+         }*/
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
 }
-
 
