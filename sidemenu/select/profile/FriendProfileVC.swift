@@ -57,7 +57,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     
     @objc fileprivate func imageTapped(){
-        // アルバム(Photo liblary)の閲覧権限の確認
+      //   アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){

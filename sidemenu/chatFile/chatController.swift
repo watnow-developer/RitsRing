@@ -159,7 +159,6 @@ class chatController : UITableViewController{
     
     func configureUI(){
         
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
         
     

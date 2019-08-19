@@ -28,7 +28,7 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // button
+        // イラストbutton
         screenWidth = view.frame.size.width
         screenHeight = view.frame.size.height
         clickbutton.frame = CGRect(x:0, y:180,

@@ -89,8 +89,9 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         
     }
     //Selectors
-    @objc func handleDismiss(){
-        dismiss(animated: true, completion: nil)
+    @objc func backMain(){
+        let NextController = HomeController()
+        self.present(NextController, animated: true ,completion: nil)
     }
     
     
@@ -104,7 +105,7 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
         navigationController?.navigationBar.barStyle = .black
         
         //withRenderingMode(.alwaysOriginal)することによって元の色を保つ
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismiss ))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
         
     }
     

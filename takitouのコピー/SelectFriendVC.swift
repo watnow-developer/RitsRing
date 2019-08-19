@@ -18,6 +18,7 @@ class SelectFriendViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         let Alert: UIAlertController = UIAlertController(title:"フレンドになりますか",message: nil,preferredStyle: .alert)
         let YesAction = UIAlertAction(title: "Yes", style: .default) {
             action in
