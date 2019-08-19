@@ -10,7 +10,7 @@
 //メイン画面
 import UIKit
 
-class HomeController: UIViewController {
+class HomeController: UIViewController,UINavigationControllerDelegate{
     
     let image = UIImage(named:"click")!
     var screenWidth:CGFloat = 0
@@ -61,6 +61,7 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configureNavigationBar()
+        
         
     }
     
