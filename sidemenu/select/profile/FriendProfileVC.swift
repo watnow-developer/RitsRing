@@ -60,18 +60,18 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         // アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+      /*  if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             print("present Start")
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-        }
+        }*/
     }
     
     func checkPermission(){
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+       /* let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         
         switch photoAuthorizationStatus {
         case .authorized:
@@ -92,7 +92,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
             print("denied")
         @unknown default:
             break
-        }
+        }*/
     }
 
 

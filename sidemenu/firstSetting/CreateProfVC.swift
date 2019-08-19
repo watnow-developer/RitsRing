@@ -36,8 +36,8 @@ class CreateProfileViewController: UIViewController {
         
         
         let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-        headerview.isUserInteractionEnabled = true
-        headerview.addGestureRecognizer(tapview)
+        //headerview.isUserInteractionEnabled = true
+       // headerview.addGestureRecognizer(tapview)
         
         
         
@@ -83,18 +83,18 @@ class CreateProfileViewController: UIViewController {
         // アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+       /* if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             print("present Start")
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-        }
+        }*/
     }
     
     func checkPermission(){
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+      /*  let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
         
         switch photoAuthorizationStatus {
         case .authorized:
@@ -115,7 +115,7 @@ class CreateProfileViewController: UIViewController {
             print("denied")
         @unknown default:
             break
-        }
+        }*/
     }
 
 
