@@ -30,8 +30,8 @@ class SelectFriendViewController: UIViewController {
         let NoAction = UIAlertAction(title: "No", style: .default){
             action in
             
-            let controller = noselectedview()
-            self.present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
+            let controller2 = noselectedview()
+            self.present(UINavigationController(rootViewController: controller2),animated: true , completion: nil)
         }
         
         Alert.addAction(YesAction)

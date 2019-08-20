@@ -152,13 +152,14 @@ class chatController : UITableViewController{
     }
     //次に行く動作
     @objc func backMain(){
-        let NextController = SelectFriendViewController()
-        self.present(NextController, animated: true ,completion: nil)
+        let NextController44 = SelectFriendViewController()
+        self.present(NextController44, animated: true ,completion: nil)
     }
     
     
     func configureUI(){
         
+    
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
         
     

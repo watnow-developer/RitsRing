@@ -22,7 +22,7 @@ class noselectedview:UIViewController{
         let CloseAction = UIAlertAction(title: "もう一度マッチしにいく", style: .default) {
             action in
             
-            let controller = ViewController()
+            let controller = genderSelectController()
             self.present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
         }
         Alert.addAction(CloseAction)
