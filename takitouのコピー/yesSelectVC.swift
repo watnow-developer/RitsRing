@@ -45,7 +45,7 @@ class yesselectedview: UIViewController {
     }()
     
     @objc func GONext(_ sender:UIButton){
-        let GScontroller = HomeController()
+        let GScontroller = friendlistController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
     }
     override func viewDidLoad() {
