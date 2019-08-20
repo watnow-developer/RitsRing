@@ -16,6 +16,7 @@ class CreateProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         
         let profilelabel:UILabel = UILabel(frame:CGRect(x: 10, y: 200, width: 200, height: 100))
         profilelabel.textAlignment = .center
@@ -26,7 +27,7 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(profilelabel)
         
         
-        let UserView:UIImageView = UIImageView(image: UIImage(named: "profile"))
+        let UserView:UIImageView = UIImageView(image: UIImage(named: "people"))
         UserView.frame = CGRect(x: 100, y: 300, width:200, height: 200)
         UserView.center.x = self.view.center.x
         UserView.layer.cornerRadius = 20
@@ -60,6 +61,7 @@ class CreateProfileViewController: UIViewController {
         gobutton.setTitle("GO", for: .normal)
         gobutton.setTitleColor(.white, for: .normal)
         gobutton.layer.cornerRadius = 20
+        gobutton.addTarget(self, action: #selector(CreateProfileViewController.goNext(_:)), for: .touchUpInside)
         self.view.addSubview(gobutton)
         
         
@@ -67,7 +69,8 @@ class CreateProfileViewController: UIViewController {
         warninglabel.text = "※フレンドにのみ表示されます"
         warninglabel.textAlignment = .center
         self.view.addSubview(warninglabel)
-        
+    
+    
         // Do any additional setup after loading the view.
     }
     
@@ -124,4 +127,5 @@ class CreateProfileViewController: UIViewController {
     
     
 }
+
 

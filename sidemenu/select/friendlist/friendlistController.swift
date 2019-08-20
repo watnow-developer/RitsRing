@@ -65,7 +65,7 @@ class friendlistController: UIViewController,UITableViewDelegate,UITableViewData
             */
         //cell タップ
         if(indexPath.section == 0 ){
-            let controller0 = chatController()
+            let controller0 = friendchatController()
             self.present(UINavigationController(rootViewController: controller0), animated: true ,completion: nil)
         }else if(indexPath.section == 1){
             let controller1 = talkUnableController()
