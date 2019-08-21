@@ -37,7 +37,7 @@ class NextViewController: UIViewController {
         let NoAction = UIAlertAction(title: "No", style: .default){
             action in
             
-            let controller = noselectedview()
+            let controller = FirstProfileViewController()
             self.present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
         }
     
