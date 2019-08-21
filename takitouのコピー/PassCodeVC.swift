@@ -37,7 +37,7 @@ class NextViewController: UIViewController {
         let NoAction = UIAlertAction(title: "No", style: .default){
             action in
             
-            let controller = FirstProfileViewControllerhttps://github.com/instamobile/messenger-iOS-chat-swift-firestore()
+            let controller = FirstProfileViewController()
             self.present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
         }
     
