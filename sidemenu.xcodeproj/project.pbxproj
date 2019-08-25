@@ -41,6 +41,7 @@
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
 		964256D3282745CA868D5CB6 /* Pods_sidemenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8490E8BDF0B3F45448B821BD /* Pods_sidemenuTests.framework */; };
+		E7C61B3C230D4C1D00D53F26 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		8490E8BDF0B3F45448B821BD /* Pods_sidemenuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidemenuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A94193599E312CFB2682044 /* Pods-sidemenuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuTests.debug.xcconfig"; path = "Target Support Files/Pods-sidemenuTests/Pods-sidemenuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD28993C707C3DC0D2BA73DF /* Pods-sidemenuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuUITests.debug.xcconfig"; path = "Target Support Files/Pods-sidemenuUITests/Pods-sidemenuUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC516AFF352C95D9E4847EAD /* Pods-sidemenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenu.debug.xcconfig"; path = "Target Support Files/Pods-sidemenu/Pods-sidemenu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +264,7 @@
 				589C899823000B3C002CCC95 /* pickerProfileController.swift */,
 				589C898623000902002CCC95 /* LoginVC.swift */,
 				589C898523000902002CCC95 /* PassCodeVC.swift */,
+				E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */,
 			);
 			path = firstSetting;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				589C898422FFFB2F002CCC95 /* CreateProfVC.swift in Sources */,
 				589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */,
 				589C899723000A47002CCC95 /* ProfileVC.swift in Sources */,
+				E7C61B3C230D4C1D00D53F26 /* SignUpViewController.swift in Sources */,
 				589C897822FFEB03002CCC95 /* chatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

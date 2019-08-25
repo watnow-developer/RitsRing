@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = FirstProfileViewController()
+        window?.rootViewController = SignUpViewController()
          
         return true
     }
