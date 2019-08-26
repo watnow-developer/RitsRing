@@ -35,9 +35,15 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(UserView)
         
         
+<<<<<<< HEAD
        // let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
        // headerview.isUserInteractionEnabled = true
         // headerview.addGestureRecognizer(tapview)
+=======
+        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
+        //headerview.isUserInteractionEnabled = true
+       // headerview.addGestureRecognizer(tapview)
+>>>>>>> bc9d2ff273efb299e946b4400b90833b002eded1
         
         
         
@@ -85,6 +91,7 @@ class CreateProfileViewController: UIViewController {
         // アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
+<<<<<<< HEAD
          if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
          print("present Start")
          let imagePicker = UIImagePickerController()
@@ -119,6 +126,41 @@ class CreateProfileViewController: UIViewController {
          break
          }
  
+=======
+       /* if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            print("present Start")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }*/
+    }
+    
+    func checkPermission(){
+      /*  let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("auth")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("not Determined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        @unknown default:
+            break
+        }*/
+>>>>>>> bc9d2ff273efb299e946b4400b90833b002eded1
     }
     
     */

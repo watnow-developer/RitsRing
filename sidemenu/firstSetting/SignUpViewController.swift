@@ -50,9 +50,21 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         button.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         button.setTitle("新規登録", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(SignUpViewController.goNext(_:)), for: .touchUpInside)
+       // button.addTarget(self, action: #selector(SignUpViewController.goNext(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(SignUpViewController.didTapNewButton(_:)), for: .touchUpInside)
         return button
     }()
+    
+    private func showErrorIFNeeded(_ errorOrNil: Error?){
+        //guard文は条件が偽の場合{}内の処理が行われる
+        //エラーがない場合はreturnで関数を抜け出す
+        guard errorOrNil != nil else {return}
+        let messages = "エラーが起きました"
+        let alert = UIAlertController(title: nil, message: messages, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true ,completion: nil)
+        
+    }
     
     
     override func viewDidLoad() {
@@ -73,13 +85,21 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     }
     
     
+    @objc func didTapNewButton(_ sender:UIButton){
+        let email = signupMailTextField ?? ""
+        
+    }
+    
+    
+    /*
+     確認コードの画面に映る前に確認
     @objc func goNext(_ sender:UIButton){
         let nextvc = NextViewController()
         nextvc.view.backgroundColor = .white
         self.present(nextvc, animated: true, completion: nil)
         
     }
-    
+    */
     @objc func gogoNext(_ sender:UIButton){
         let nextvc = genderSelectController()
         nextvc.view.backgroundColor = UIColor.white
