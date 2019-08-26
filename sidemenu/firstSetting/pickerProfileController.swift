@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
 
 class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
+    
+    
+       let db = Firestore.firestore()
     
     let button = UIButton()
     let textfield_faculty = UITextField()
@@ -174,6 +179,11 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     @objc func GONext(_ sender:UIButton){
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
+        guard let user = Auth.auth().currentUser else {
+            // サインインしていない場合の処理をするなど
+            return
+            
+    }
     }
     
     @objc func dissmissKeyboard()

@@ -27,7 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
+<<<<<<< HEAD
+        window?.rootViewController = ContainerController()
+=======
         window?.rootViewController = SignUpViewController()
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
          
         return true
     }
