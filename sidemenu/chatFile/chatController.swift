@@ -27,6 +27,13 @@ class chatController : UITableViewController{
     
     fileprivate let cellId = "id123"
     
+    let messegeTF: UITextField = {
+        let textdield = UITextField()
+        textdield.frame = CGRect(x: UIScreen.main.bounds.width / 8, y: UIScreen.main.bounds.height * 2/3 , width: UIScreen.main.bounds.width * 3/4, height: 100)
+        textdield.textAlignment = NSTextAlignment.center
+        textdield.backgroundColor = UIColor.white
+        return textdield
+    }()
     //true 左　false 右
     
     
@@ -39,6 +46,7 @@ class chatController : UITableViewController{
         ChatMessage(text: "this message should appear in the left", isIncoming: true, date: Date()),
         ChatMessage(text: "Third section message", isIncoming: true, date: Date())
     ]
+    
     
     fileprivate func attemptToAssembleGroupedMessages() {
         print("Attempt to group our messages together based on Date property")
@@ -65,11 +73,10 @@ class chatController : UITableViewController{
         attemptToAssembleGroupedMessages()
         
         //Navigation Controller setting
-        navigationItem.title = "RiRi Chat"
+        navigationItem.title = "RiRi Chat"// すでにフレンドなのか、あたらしい
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         navigationController?.navigationBar.barStyle = .black
-        
         
         
         //tableView setting
@@ -78,6 +85,7 @@ class chatController : UITableViewController{
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         configureUI()
+        view.addSubview(messegeTF)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -127,16 +135,15 @@ class chatController : UITableViewController{
             
             return containerView
         }
-        
+
         return nil
         
     }
     
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return  50
     }
-    
-    
     
     //一つのセクションに何個メッセージ(return)
     
@@ -150,6 +157,7 @@ class chatController : UITableViewController{
         cell.chatMessage = chatMessage
         return cell
     }
+    
     //次に行く動作
     @objc func backMain(){
         let NextController44 = SelectFriendViewController()
@@ -158,12 +166,9 @@ class chatController : UITableViewController{
     
     
     func configureUI(){
-        
-    
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
-        
     
-}
+    }
     
     
 

@@ -31,9 +31,9 @@
 		589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898923000936002CCC95 /* SelectFriendVC.swift */; };
 		589C898C23000942002CCC95 /* NoSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898B23000942002CCC95 /* NoSelectVC.swift */; };
 		589C898E2300094B002CCC95 /* yesSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C898D2300094B002CCC95 /* yesSelectVC.swift */; };
-		589C8991230009C2002CCC95 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8990230009C1002CCC95 /* FriendProfileVC.swift */; };
+		589C8991230009C2002CCC95 /* MyprofileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8990230009C1002CCC95 /* MyprofileVC.swift */; };
 		589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */; };
-		589C899723000A47002CCC95 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899623000A47002CCC95 /* ProfileVC.swift */; };
+		589C899723000A47002CCC95 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899623000A47002CCC95 /* FriendProfileVC.swift */; };
 		589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899823000B3C002CCC95 /* pickerProfileController.swift */; };
 		589EE5E0230BE2C700FC801E /* friendChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE5DF230BE2C700FC801E /* friendChatController.swift */; };
 		589EE5E2230BE2E200FC801E /* friendChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */; };
@@ -94,9 +94,9 @@
 		589C898923000936002CCC95 /* SelectFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendVC.swift; path = "takitouのコピー/SelectFriendVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C898B23000942002CCC95 /* NoSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoSelectVC.swift; path = "takitouのコピー/NoSelectVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C898D2300094B002CCC95 /* yesSelectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = yesSelectVC.swift; path = "takitouのコピー/yesSelectVC.swift"; sourceTree = SOURCE_ROOT; };
-		589C8990230009C1002CCC95 /* FriendProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendProfileVC.swift; path = sidemenu/select/profile/FriendProfileVC.swift; sourceTree = SOURCE_ROOT; };
+		589C8990230009C1002CCC95 /* MyprofileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyprofileVC.swift; path = sidemenu/select/profile/MyprofileVC.swift; sourceTree = SOURCE_ROOT; };
 		589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextInputTableViewCell.swift; path = sidemenu/select/profile/TextInputTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		589C899623000A47002CCC95 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = "takitouのコピー/ProfileVC.swift"; sourceTree = SOURCE_ROOT; };
+		589C899623000A47002CCC95 /* FriendProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendProfileVC.swift; path = "takitouのコピー/FriendProfileVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C899823000B3C002CCC95 /* pickerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerProfileController.swift; sourceTree = "<group>"; };
 		589EE5DF230BE2C700FC801E /* friendChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendChatController.swift; sourceTree = "<group>"; };
 		589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendChatMessageCell.swift; sourceTree = "<group>"; };
@@ -276,7 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				58A44C3722FBE4EC00C5C961 /* friendlistController.swift */,
-				589C899623000A47002CCC95 /* ProfileVC.swift */,
+				589C899623000A47002CCC95 /* FriendProfileVC.swift */,
 			);
 			path = friendlist;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 		589C899523000A0C002CCC95 /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				589C8990230009C1002CCC95 /* FriendProfileVC.swift */,
+				589C8990230009C1002CCC95 /* MyprofileVC.swift */,
 				589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */,
 			);
 			path = profile;
@@ -575,13 +575,17 @@
 				589C898723000902002CCC95 /* PassCodeVC.swift in Sources */,
 				589C898823000902002CCC95 /* LoginVC.swift in Sources */,
 				585FCA1522F5AA0200302460 /* AppDelegate.swift in Sources */,
-				589C8991230009C2002CCC95 /* FriendProfileVC.swift in Sources */,
+				589C8991230009C2002CCC95 /* MyprofileVC.swift in Sources */,
 				585E156122FE086100190A7D /* genderSelectController.swift in Sources */,
 				588BB9E722F67F680026FDA8 /* MenuOptionCell.swift in Sources */,
 				589C898422FFFB2F002CCC95 /* CreateProfVC.swift in Sources */,
 				589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */,
+<<<<<<< HEAD
+				589C899723000A47002CCC95 /* FriendProfileVC.swift in Sources */,
+=======
 				589C899723000A47002CCC95 /* ProfileVC.swift in Sources */,
 				E7C61B3C230D4C1D00D53F26 /* SignUpViewController.swift in Sources */,
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				589C897822FFEB03002CCC95 /* chatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,7 +763,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 3H5AKQ5MZL;
+=======
 				DEVELOPMENT_TEAM = "";
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				INFOPLIST_FILE = sidemenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -779,7 +787,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
+				DEVELOPMENT_TEAM = 3H5AKQ5MZL;
+=======
 				DEVELOPMENT_TEAM = "";
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				INFOPLIST_FILE = sidemenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
