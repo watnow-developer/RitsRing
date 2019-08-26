@@ -35,17 +35,7 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(UserView)
         
         
-<<<<<<< HEAD
-       // let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-       // headerview.isUserInteractionEnabled = true
-        // headerview.addGestureRecognizer(tapview)
-=======
-        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-        //headerview.isUserInteractionEnabled = true
-       // headerview.addGestureRecognizer(tapview)
->>>>>>> bc9d2ff273efb299e946b4400b90833b002eded1
-        
-        
+
         
         let Namelabel:UILabel = UILabel(frame: CGRect(x: 10, y: 500, width: 100, height: 200))
         Namelabel.font = .systemFont(ofSize: 25)

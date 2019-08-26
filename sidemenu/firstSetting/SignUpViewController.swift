@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpViewController:UIViewController, UITextFieldDelegate{
     
@@ -39,7 +40,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     var signUpButton:UIButton = {
         var button = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height/3+200, width: 200, height: 50))
         button.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
-        button.setTitle("ログイン", for: .normal)
+        button.setTitle("サインイン", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(SignUpViewController.gogoNext(_:)), for: .touchUpInside)
         return button
@@ -86,7 +87,18 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     
     
     @objc func didTapNewButton(_ sender:UIButton){
-        let email = signupMailTextField ?? ""
+        let email = signupMailTextField.text ?? ""
+        let password = signupPassTextField.text ?? ""
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
         
     }
     
@@ -101,9 +113,10 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     }
     */
     @objc func gogoNext(_ sender:UIButton){
-        let nextvc = genderSelectController()
-        nextvc.view.backgroundColor = UIColor.white
-        self.present(nextvc,animated: true, completion:  nil)
+        let nextvc = SignInViewController()
+        nextvc.view.backgroundColor = .white
+        self.present(nextvc, animated: true, completion: nil)
+        
     }
     
     
