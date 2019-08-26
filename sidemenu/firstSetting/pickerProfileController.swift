@@ -18,7 +18,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     let textfield_gender = UITextField()
     
     
-    
+    var ref: DatabaseReference!
     
     
     
@@ -169,17 +169,8 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         button.addTarget(self, action: #selector(pickerProfileViewController.GONext(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
-    }
-    
-    
-    @objc func GONext(_ sender:UIButton){
-        let GScontroller = genderSelectController()
-        self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
-    }
-    
-    @objc func dissmissKeyboard()
-    {
-        view.endEditing(true)
+       ref = Database.database().reference()
+        
     }
     //ピッカー設定
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -199,6 +190,27 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         return true
     }
+    
+    
+    @objc func GONext(_ sender:UIButton){
+        
+        /*ここ見てください↓  */
+        
+         let data = [current_arr]
+         self.ref.child("user/A").setValue(data)
+        
+        //↑
+        
+        let GScontroller = genderSelectController()
+        self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
+      
+    }
+    
+    @objc func dissmissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
