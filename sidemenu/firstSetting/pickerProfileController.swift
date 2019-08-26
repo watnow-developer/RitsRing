@@ -194,12 +194,11 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     
     @objc func GONext(_ sender:UIButton){
         
-        /*ここ見てください↓  */
+        /*firebase*/
         
-         let data = [current_arr]
+         let data = [faculty,gender,enroll]
          self.ref.child("user/A").setValue(data)
-        
-        //↑
+    
         
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
