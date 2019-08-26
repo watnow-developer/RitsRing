@@ -6,6 +6,7 @@
 //  Copyright © 2019 瀧頭　直斗. All rights reserved.
 //
 import UIKit
+import Photos
 
 
 class CreateProfileViewController: UIViewController {
@@ -34,11 +35,7 @@ class CreateProfileViewController: UIViewController {
         self.view.addSubview(UserView)
         
         
-        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-        //headerview.isUserInteractionEnabled = true
-        // headerview.addGestureRecognizer(tapview)
-        
-        
+
         
         let Namelabel:UILabel = UILabel(frame: CGRect(x: 10, y: 500, width: 100, height: 200))
         Namelabel.font = .systemFont(ofSize: 25)
@@ -79,23 +76,24 @@ class CreateProfileViewController: UIViewController {
         self.present(UINavigationController(rootViewController: CFcontroller), animated: true ,completion: nil)
         
     }
-    
+    /*
     @objc fileprivate func imageTapped(){
         // アルバム(Photo liblary)の閲覧権限の確認
         checkPermission()
         
-        /* if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+<<<<<<< HEAD
+         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
          print("present Start")
          let imagePicker = UIImagePickerController()
          imagePicker.delegate = self
          imagePicker.sourceType = .photoLibrary
          imagePicker.allowsEditing = true
          self.present(imagePicker, animated: true, completion: nil)
-         }*/
+         }
     }
     
     func checkPermission(){
-        /*  let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
          
          switch photoAuthorizationStatus {
          case .authorized:
@@ -116,10 +114,46 @@ class CreateProfileViewController: UIViewController {
          print("denied")
          @unknown default:
          break
-         }*/
+         }
+ 
+=======
+       /* if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            print("present Start")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }*/
     }
     
+    func checkPermission(){
+      /*  let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("auth")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("not Determined")
+        case .restricted:
+            print("restricted")
+        case .denied:
+            print("denied")
+        @unknown default:
+            break
+        }*/
+>>>>>>> bc9d2ff273efb299e946b4400b90833b002eded1
+    }
     
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

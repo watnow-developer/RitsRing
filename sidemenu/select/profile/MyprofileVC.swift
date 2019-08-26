@@ -9,6 +9,8 @@
 import UIKit
 
 class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+   
+    
     
     
     //section1の文字配列
@@ -58,23 +60,20 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     @objc fileprivate func imageTapped(){
       //   アルバム(Photo liblary)の閲覧権限の確認
-        checkPermission()
+      //  checkPermission()
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+      /*  if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
             print("present Start")
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
             imagePicker.sourceType = .photoLibrary
             imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
-        }
+        }*/
     }
-    
+    /*
     func checkPermission(){
-        
-        /***
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
+
         switch photoAuthorizationStatus {
         case .authorized:
             print("auth")
@@ -95,11 +94,9 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
             print("denied")
         @unknown default:
             break
-        }
-        
-        ***/
-    }
 
+    }
+*/
 
 @objc func handleDismiss(){
     dismiss(animated: true, completion: nil)

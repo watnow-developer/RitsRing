@@ -17,6 +17,8 @@ class FirstProfileViewController: UIViewController,UITableViewDelegate,UITableVi
     
     let textsection:[String] = ["Mailaddress","Passward"]
     
+    var email:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -47,6 +49,7 @@ class FirstProfileViewController: UIViewController,UITableViewDelegate,UITableVi
         let nextvc = NextViewController()
         nextvc.view.backgroundColor = .white
         self.present(nextvc, animated: true, completion: nil)
+       
     }
     
     

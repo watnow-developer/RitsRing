@@ -41,6 +41,8 @@
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
 		964256D3282745CA868D5CB6 /* Pods_sidemenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8490E8BDF0B3F45448B821BD /* Pods_sidemenuTests.framework */; };
+		E7B69EFA231391A0001A9D26 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B69EF9231391A0001A9D26 /* SignInViewController.swift */; };
+		E7C61B3C230D4C1D00D53F26 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,8 @@
 		8490E8BDF0B3F45448B821BD /* Pods_sidemenuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidemenuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A94193599E312CFB2682044 /* Pods-sidemenuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuTests.debug.xcconfig"; path = "Target Support Files/Pods-sidemenuTests/Pods-sidemenuTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD28993C707C3DC0D2BA73DF /* Pods-sidemenuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuUITests.debug.xcconfig"; path = "Target Support Files/Pods-sidemenuUITests/Pods-sidemenuUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E7B69EF9231391A0001A9D26 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC516AFF352C95D9E4847EAD /* Pods-sidemenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenu.debug.xcconfig"; path = "Target Support Files/Pods-sidemenu/Pods-sidemenu.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +266,8 @@
 				589C899823000B3C002CCC95 /* pickerProfileController.swift */,
 				589C898623000902002CCC95 /* LoginVC.swift */,
 				589C898523000902002CCC95 /* PassCodeVC.swift */,
+				E7C61B3B230D4C1D00D53F26 /* SignUpViewController.swift */,
+				E7B69EF9231391A0001A9D26 /* SignInViewController.swift */,
 			);
 			path = firstSetting;
 			sourceTree = "<group>";
@@ -473,6 +479,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-sidemenu/Pods-sidemenu-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
@@ -485,6 +492,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
@@ -562,6 +570,7 @@
 				585E156322FE7F9A00190A7D /* matchOkController.swift in Sources */,
 				589C898E2300094B002CCC95 /* yesSelectVC.swift in Sources */,
 				589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */,
+				E7B69EFA231391A0001A9D26 /* SignInViewController.swift in Sources */,
 				58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */,
 				589C898723000902002CCC95 /* PassCodeVC.swift in Sources */,
 				589C898823000902002CCC95 /* LoginVC.swift in Sources */,
@@ -571,7 +580,12 @@
 				588BB9E722F67F680026FDA8 /* MenuOptionCell.swift in Sources */,
 				589C898422FFFB2F002CCC95 /* CreateProfVC.swift in Sources */,
 				589C898A23000936002CCC95 /* SelectFriendVC.swift in Sources */,
+<<<<<<< HEAD
 				589C899723000A47002CCC95 /* FriendProfileVC.swift in Sources */,
+=======
+				589C899723000A47002CCC95 /* ProfileVC.swift in Sources */,
+				E7C61B3C230D4C1D00D53F26 /* SignUpViewController.swift in Sources */,
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				589C897822FFEB03002CCC95 /* chatController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,7 +763,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 3H5AKQ5MZL;
+=======
+				DEVELOPMENT_TEAM = "";
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				INFOPLIST_FILE = sidemenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -769,7 +787,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = 3H5AKQ5MZL;
+=======
+				DEVELOPMENT_TEAM = "";
+>>>>>>> 5c151e39d050cf855acb292b3c630fe8095549e3
 				INFOPLIST_FILE = sidemenu/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
