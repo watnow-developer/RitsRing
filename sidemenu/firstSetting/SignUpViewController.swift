@@ -11,7 +11,7 @@ import Firebase
 
 class SignUpViewController:UIViewController, UITextFieldDelegate{
     
-    var screenwidth:CGFloat = UIScreen.main.bounds.width
+
     
     var maillabel:UILabel = {
         var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 200, height: 30))
@@ -27,7 +27,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         return label
     }()
     
-    var signupMailTextField:UITextField = {
+    var signupMailTextField:UITextField! = {
         var textfield = UITextField(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-60, width: 300, height:40))
         return textfield
     }()
@@ -91,9 +91,6 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         let password = signupPassTextField.text ?? ""
         
        
-        
-        
-        
         
         
         
