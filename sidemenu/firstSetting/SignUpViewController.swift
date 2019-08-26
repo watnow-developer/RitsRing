@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class SignUpViewController:UIViewController, UITextFieldDelegate{
     
     var screenwidth:CGFloat = UIScreen.main.bounds.width
