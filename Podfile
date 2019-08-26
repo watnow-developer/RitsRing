@@ -19,7 +19,8 @@ target 'sidemenu' do
 
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
-
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
 
 
 end

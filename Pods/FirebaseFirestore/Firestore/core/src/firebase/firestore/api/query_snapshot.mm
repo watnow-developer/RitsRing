@@ -18,18 +18,14 @@
 
 #include <utility>
 
-#import "Firestore/Source/API/FIRDocumentChange+Internal.h"
-#import "Firestore/Source/API/FIRDocumentSnapshot+Internal.h"
-#import "Firestore/Source/API/FIRFirestore+Internal.h"
-#import "Firestore/Source/API/FIRQuery+Internal.h"
-#import "Firestore/Source/Core/FSTQuery.h"
 #import "Firestore/Source/Model/FSTDocument.h"
 
 #include "Firestore/core/src/firebase/firestore/api/input_validation.h"
+#include "Firestore/core/src/firebase/firestore/api/query_core.h"
 #include "Firestore/core/src/firebase/firestore/core/view_snapshot.h"
 #include "Firestore/core/src/firebase/firestore/model/document_set.h"
+#include "Firestore/core/src/firebase/firestore/objc/objc_compatibility.h"
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
-#include "Firestore/core/src/firebase/firestore/util/objc_compatibility.h"
 #include "absl/types/optional.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -38,20 +34,38 @@ namespace firebase {
 namespace firestore {
 namespace api {
 
-namespace objc = util::objc;
 using api::Firestore;
 using core::DocumentViewChange;
 using core::ViewSnapshot;
+using model::DocumentComparator;
 using model::DocumentSet;
+
+QuerySnapshot::QuerySnapshot(std::shared_ptr<Firestore> firestore,
+                             core::Query query,
+                             core::ViewSnapshot&& snapshot,
+                             SnapshotMetadata metadata)
+    : firestore_(std::move(firestore)),
+      internal_query_(std::move(query)),
+      snapshot_(std::move(snapshot)),
+      metadata_(std::move(metadata)) {
+}
+
+Query QuerySnapshot::query() const {
+  return Query(internal_query_, firestore_);
+}
+
+const core::Query& QuerySnapshot::internal_query() const {
+  return internal_query_;
+}
 
 bool operator==(const QuerySnapshot& lhs, const QuerySnapshot& rhs) {
   return lhs.firestore_ == rhs.firestore_ &&
-         objc::Equals(lhs.internal_query_, rhs.internal_query_) &&
+         lhs.internal_query_ == rhs.internal_query_ &&
          lhs.snapshot_ == rhs.snapshot_ && lhs.metadata_ == rhs.metadata_;
 }
 
 size_t QuerySnapshot::Hash() const {
-  return util::Hash(firestore_, internal_query_, snapshot_, metadata_);
+  return util::Hash(firestore_.get(), internal_query_, snapshot_, metadata_);
 }
 
 void QuerySnapshot::ForEachDocument(
@@ -95,6 +109,7 @@ void QuerySnapshot::ForEachChange(
     // Special case the first snapshot because index calculation is easy and
     // fast. Also all changes on the first snapshot are adds so there are also
     // no metadata-only changes to filter out.
+    DocumentComparator doc_comparator = snapshot_.query().Comparator();
     FSTDocument* last_document = nil;
     size_t index = 0;
     for (const DocumentViewChange& change : snapshot_.document_changes()) {
@@ -106,13 +121,13 @@ void QuerySnapshot::ForEachChange(
 
       HARD_ASSERT(change.type() == DocumentViewChange::Type::kAdded,
                   "Invalid event type for first snapshot");
-      HARD_ASSERT(!last_document || snapshot_.query().comparator(
-                                        last_document, change.document()) ==
-                                        NSOrderedAscending,
+      HARD_ASSERT(!last_document || util::Ascending(doc_comparator.Compare(
+                                        last_document, change.document())),
                   "Got added events in wrong order");
 
       callback(DocumentChange(DocumentChange::Type::Added, std::move(document),
                               DocumentChange::npos, index++));
+      last_document = doc;
     }
 
   } else {
