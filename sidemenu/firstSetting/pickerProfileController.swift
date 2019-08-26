@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
