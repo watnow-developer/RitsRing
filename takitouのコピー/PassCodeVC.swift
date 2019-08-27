@@ -25,7 +25,7 @@ class NextViewController: UIViewController {
         
         let alertAction : UIAlertAction = UIAlertAction(title: "OK", style: .default, handler: {(action: UIAlertAction) -> Void in _ = Alert.textFields![0]
             
-            let controller = CreateProfileViewController()
+            let controller = pickerProfileViewController()
             self.present(UINavigationController(rootViewController: controller), animated: true ,completion: nil)
             
         })
