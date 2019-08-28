@@ -197,7 +197,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         /*firebase*/
         
         
-        self.ref.child("user/A").child("Profile").setValue(["学部": textfield_faculty.text,
+        self.ref.childByAutoId().child("Profile").setValue(["学部": textfield_faculty.text,
                                            "入学年度": textfield_enroll.text,
                                            "性別": textfield_gender.text])
         
