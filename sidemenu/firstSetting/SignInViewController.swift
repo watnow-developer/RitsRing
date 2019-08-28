@@ -6,14 +6,15 @@
 //  Copyright © 2019 yu. All rights reserved.
 //
 import UIKit
+import Firebase
 
 class SignInViewController:UIViewController, UITextFieldDelegate{
     
     var screenwidth:CGFloat = UIScreen.main.bounds.width
     
     var maillabel:UILabel = {
-        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 200, height: 30))
-        label.text = "メールアドレス"
+        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 400, height: 30))
+        label.text = "メールアドレス(RAINBOWIDを入れて下さい）"
         label.textColor = UIColor.black
         return label
     }()
@@ -25,17 +26,18 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
         return label
     }()
     
-    var signupMailTextField:UITextField = {
+    var signInMailTextField:UITextField = {
         var textfield = UITextField(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-60, width: 300, height:40))
+        textfield.placeholder = "@ed.ritsumei.ac.jp"
         return textfield
     }()
     
-    var signupPassTextField:UITextField = {
+    var signInPassTextField:UITextField = {
         var textfield = UITextField(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3+10, width: 300, height:40))
         return textfield
     }()
     
-    var signUpButton:UIButton = {
+    var signInButton:UIButton = {
         var button = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height/3+200, width: 200, height: 50))
         button.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         button.setTitle("ログイン", for: .normal)
@@ -69,14 +71,14 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
         
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.signupMailTextField.delegate = self
-        self.signupPassTextField.delegate = self
+        self.signInMailTextField.delegate = self
+        self.signInPassTextField.delegate = self
         view.addSubview(maillabel)
-        self.signupPassTextField.borderStyle = .roundedRect
-        view.addSubview(signupPassTextField)
-        self.signupMailTextField.borderStyle = .roundedRect
-        view.addSubview(signupMailTextField)
-        view.addSubview(signUpButton)
+        self.signInPassTextField.borderStyle = .roundedRect
+        view.addSubview(signInPassTextField)
+        self.signInMailTextField.borderStyle = .roundedRect
+        view.addSubview(signInMailTextField)
+        view.addSubview(signInButton)
         view.addSubview(NewButton)
         view.addSubview(passlabel)
         
@@ -88,9 +90,18 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
     }
     
     @objc func gogoNext(_ sender:UIButton){
-        let nextvc = genderSelectController()
-        nextvc.view.backgroundColor = UIColor.white
-        self.present(nextvc,animated: true, completion:  nil)
+       //メールアドレスとパスワードを確認してログインできるようにする
+        let email = signInMailTextField.text ?? ""
+        let passward = signInPassTextField.text ?? ""
+        
+        Auth.auth().signIn(withEmail: email + "@ed.ritsumei.ac.jp", password: passward) { [weak self] result, error in
+            guard let self = self else {return}
+            if (result?.user) != nil {
+                let nextvc = pickerProfileViewController()
+                self.present(nextvc, animated: true, completion: nil)
+            }
+            self.showErrorIFNeeded(error)
+        }
     }
     
     

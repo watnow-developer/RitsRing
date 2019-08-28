@@ -15,8 +15,8 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
 
     
     var maillabel:UILabel = {
-        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 200, height: 30))
-        label.text = "メールアドレス"
+        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 400, height: 30))
+        label.text = "メールアドレス(RAINBOWIDを入れて下さい)"
         label.textColor = UIColor.black
         return label
     }()
@@ -33,14 +33,14 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     }()
     
     var passlabel:UILabel = {
-        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-20, width: 200, height: 30))
+        var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-20, width: 400, height: 30))
         label.text = "パスワード"
-        label.textColor = UIColor.black
         return label
     }()
     
     var signupMailTextField:UITextField! = {
         var textfield = UITextField(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-60, width: 300, height:40))
+        textfield.placeholder = "@ed.ritsumei.ac.jp"
         return textfield
     }()
     
@@ -54,7 +54,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         button.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         button.setTitle("新規登録", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(SignUpViewController.gogoNext(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(SignUpViewController.didTapNewButton(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -64,7 +64,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         button.setTitle("すでにアカウントをお持ちの方", for: .normal)
         button.setTitleColor(.white, for: .normal)
        // button.addTarget(self, action: #selector(SignUpViewController.goNext(_:)), for: .touchUpInside)
-        button.addTarget(self, action: #selector(SignUpViewController.didTapNewButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(SignUpViewController.gogoNext(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -79,6 +79,14 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         let alert = UIAlertController(title: nil, message: messages, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true ,completion: nil)
+        
+    }
+    
+    private func Showsuccess(){
+        let messages = "メール確認後、\n「すでにアカウントお持ちの方」\nをタップして下さい"
+        let alert = UIAlertController(title: nil, message: messages, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true ,completion: nil)
         
     }
     
@@ -114,50 +122,33 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         let email = signupMailTextField.text ?? ""
         let password = signupPassTextField.text ?? ""
         let name = NameTextField.text ?? ""
-        
-        signUp(email:email ,password:password,name:name)
-        
-    }
-   
-    private func signUp(email: String, password: String, name: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+        //[weak self]後の result とerror は引数
+        Auth.auth().createUser(withEmail: email + "@ed.ritsumei.ac.jp", password: password) { [weak self] result, error in
             guard let self = self else { return }
             if let user = result?.user {
-                self.updateDisplayName(name, of: user)
-                print("done_1")
+                let req = user.createProfileChangeRequest()
+                req.displayName = name
+                req.commitChanges() { [weak self] error in
+                    guard let self = self else { return }
+                    if error == nil {
+                        user.sendEmailVerification() { [weak self] error in
+                            guard let self = self else { return }
+                            if error == nil {
+                                self.Showsuccess()
+                            }
+                            self.showErrorIFNeeded(error)
+                        }
+                    }
+                    self.showErrorIFNeeded(error)
+                }
             }
             self.showErrorIFNeeded(error)
         }
-    }
-    
-    private func updateDisplayName(_ name: String, of user: User) {
-        let request = user.createProfileChangeRequest()
-        request.displayName = name
-        request.commitChanges() { [weak self] error in
-            guard let self = self else { return }
-            if error != nil {
-                self.sendEmailVerification(to: user)
-                print("done_2")
-            }
-            self.showErrorIFNeeded(error)
-        }
-    }
-    
-    private func sendEmailVerification(to user: User) {
-        user.sendEmailVerification() { [weak self] error in
-            guard let self = self else { return }
-            if error != nil {
-                self.showSignUpCompletion()
-            }
-            self.showErrorIFNeeded(error)
-        }
-    }
-    //確認メールが送られた時に呼ばれる
-    private func showSignUpCompletion() {
-        print("done")
-    }
-
         
+    }
+    
+    
+   
     
     
     
