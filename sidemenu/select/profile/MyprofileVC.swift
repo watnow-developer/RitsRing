@@ -12,7 +12,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     
     //section1の文字配列
-    let rowtext:[String] = ["性別","学部", "学科", "入学年度"]
+    let rowtext:[String] = ["性別","学部", "入学年度"]
     
     var tableview:UITableView = {
         
@@ -22,83 +22,21 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         return tableview
     }()
-    //画像
-    var headerview:UIImageView = {
-        
-        var headerview = UIImageView()
-        let imageview = UIImage(named: "profile")
-        let screenwidth = UIScreen.main.bounds.width/4
-        let screenheight = UIScreen.main.bounds.width/4
-        headerview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width/7*5, y: screenheight, width: screenwidth, height: screenwidth))
-        headerview.image = imageview
-        headerview.layer.cornerRadius = 20
-        headerview.clipsToBounds = true
-        
-        return headerview
-    }()
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
         view.addSubview(tableview)
         
-        view.addSubview(headerview)
+    
         
         tableview.register(TextInputTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(TextInputTableViewCell.self))
         
         configureUI()
-        
-        let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-        headerview.isUserInteractionEnabled = true
-        headerview.addGestureRecognizer(tapview)
         // Do any additional setup after loading the view.
     }
 
-    
-    @objc fileprivate func imageTapped(){
-      //   アルバム(Photo liblary)の閲覧権限の確認
-        checkPermission()
-        
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            print("present Start")
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.sourceType = .photoLibrary
-            imagePicker.allowsEditing = true
-            self.present(imagePicker, animated: true, completion: nil)
-        }
-    }
-    
-    func checkPermission(){
-        
-        /***
-        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
-        switch photoAuthorizationStatus {
-        case .authorized:
-            print("auth")
-        case .notDetermined:
-            
-            PHPhotoLibrary.requestAuthorization({
-                (newStatus) in
-                print("status is \(newStatus)")
-                if newStatus ==  PHAuthorizationStatus.authorized {
-                    /* do stuff here */
-                    print("success")
-                }
-            })
-            print("not Determined")
-        case .restricted:
-            print("restricted")
-        case .denied:
-            print("denied")
-        @unknown default:
-            break
-        }
-        
-        ***/
-    }
 
 
 @objc func handleDismiss(){
@@ -131,7 +69,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         if(section == 0){
             return 1
         }else{
-            return 4
+            return 3
         }
     }
     

@@ -11,7 +11,7 @@ import UIKit
 class ViewController:
 UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
     //section1の文字配列
-    let rowtext:[String] = ["性別","学部", "学科", "入学年度"]
+    let rowtext:[String] = ["性別","学部", "入学年度"]
     
     var tableview:UITableView = {
         
@@ -21,29 +21,13 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
         
         return tableview
     }()
-    //画像
-    var headerview:UIImageView = {
-        
-        var headerview = UIImageView()
-        let imageview = UIImage(named: "profile")
-        let screenwidth = UIScreen.main.bounds.width/4
-        let screenheight = UIScreen.main.bounds.width/4
-        headerview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width/7*5, y: screenheight, width: screenwidth, height: screenwidth))
-        headerview.image = imageview
-        headerview.layer.cornerRadius = 20
-        headerview.clipsToBounds = true
-        
-        return headerview
-    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.delegate = self
         tableview.dataSource = self
         view.addSubview(tableview)
-        
-        view.addSubview(headerview)
-        
         //追加
              configureUI()
         
@@ -67,7 +51,7 @@ UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
         if(section == 0){
             return 1
         }else{
-            return 4
+            return 3
         }
     }
     
