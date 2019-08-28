@@ -23,11 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        
         let db = Firestore.firestore()
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = SignUpViewController()
+        window?.rootViewController = pickerProfileViewController()
          
         return true
     }

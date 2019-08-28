@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
@@ -17,7 +18,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     let textfield_gender = UITextField()
     
     
-    
+    var ref: DatabaseReference!
     
     
     
@@ -25,7 +26,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     
     
     
-    let faculty = ["法学部","産業社会学部","国際関係学部","文学部","映像学部","映像学部","政策科学部","総合心理学部","グローバル教養学部","経済学部","スポーツ健康科学部","食マネジメント学部","理工学部","情報理工学部","生命科学部","薬学部"]
+    let faculty = ["法学部","産業社会学部","国際関係学部","文学部","映像学部","政策科学部","総合心理学部","グローバル教養学部","経済学部","スポーツ健康科学部","食マネジメント学部","理工学部","情報理工学部","生命科学部","薬学部"]
     let  enroll = ["2019年度","2018年度","2017年度","2016年度","2015年度","2014年度","2013年度","その他/教授"]
     let gender = ["女性","男性"]
     
@@ -168,17 +169,8 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         button.addTarget(self, action: #selector(pickerProfileViewController.GONext(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
-    }
-    
-    
-    @objc func GONext(_ sender:UIButton){
-        let GScontroller = genderSelectController()
-        self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
-    }
-    
-    @objc func dissmissKeyboard()
-    {
-        view.endEditing(true)
+       ref = Database.database().reference()
+        
     }
     //ピッカー設定
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -198,6 +190,29 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         return true
     }
+    
+    
+    @objc func GONext(_ sender:UIButton){
+        
+        /*firebase*/
+        
+
+         self.ref.child("user/A").setValue(["faculty": textfield_faculty.text,
+                                            "enroll": textfield_enroll.text,
+                                            "gender": textfield_gender.text])
+        
+
+        
+        let GScontroller = genderSelectController()
+        self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
+      
+    }
+    
+    @objc func dissmissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
