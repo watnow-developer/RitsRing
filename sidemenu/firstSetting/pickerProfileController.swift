@@ -169,7 +169,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         button.addTarget(self, action: #selector(pickerProfileViewController.GONext(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
-       ref = Database.database().reference()
+        ref = Database.database().reference()
         
     }
     //ピッカー設定
@@ -196,16 +196,16 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         /*firebase*/
         
-
-         self.ref.child("user/A").setValue(["faculty": textfield_faculty.text,
-                                            "enroll": textfield_enroll.text,
-                                            "gender": textfield_gender.text])
         
-
+        self.ref.child("user/A").child("Profile").setValue(["学部": textfield_faculty.text,
+                                           "入学年度": textfield_enroll.text,
+                                           "性別": textfield_gender.text])
+        
+        
         
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
-      
+        
     }
     
     @objc func dissmissKeyboard()
@@ -237,6 +237,5 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     }
     
 }
-
 
 
