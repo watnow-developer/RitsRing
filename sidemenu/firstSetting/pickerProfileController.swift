@@ -194,12 +194,18 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     
     @objc func GONext(_ sender:UIButton){
         
+        //他のクラスのメゾット
+        
+let myclass = SignUpViewController()
+        
         /*firebase*/
         
         
-        self.ref.childByAutoId().child("Profile").setValue(["学部": textfield_faculty.text,
+        self.ref.childByAutoId().child("Profile").setValue([
+                                            "学部": textfield_faculty.text,
                                            "入学年度": textfield_enroll.text,
-                                           "性別": textfield_gender.text])
+                                           "性別": textfield_gender.text,
+                                        "name" : myclass.NameTextField.text])
         
         
         
