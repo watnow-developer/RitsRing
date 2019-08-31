@@ -12,7 +12,7 @@ import Firebase
 
 class SignUpViewController:UIViewController, UITextFieldDelegate{
     
-
+    var ref = DatabaseReference()
     
     var maillabel:UILabel = {
         var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 400, height: 30))
@@ -115,6 +115,8 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
         view.addSubview(passlabel)
         view.addSubview(maillabel)
         view.addSubview(namelabel)
+        
+        ref = Database.database().reference()
     }
     
     //すでにアカウントを持っている方　を押した場合の処理
@@ -135,6 +137,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
                             guard let self = self else { return }
                             if error == nil {
                                 self.Showsuccess()
+                                self.ref.child("User").child(user.uid).setValue(["名前": name])
                             }
                             self.showErrorIFNeeded(error)
                         }
