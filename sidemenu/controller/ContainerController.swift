@@ -108,6 +108,9 @@ class ContainerController: UIViewController {
              let controller1 = genderSelectController()
             present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
             
+        case .logout:
+            let controller3 = SignUpViewController()
+            present(UINavigationController(rootViewController: controller3),animated: true , completion: nil)
             
         }
     }
