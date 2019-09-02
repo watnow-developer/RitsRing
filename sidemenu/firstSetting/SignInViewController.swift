@@ -96,7 +96,7 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
         
         Auth.auth().signIn(withEmail: email + "@ed.ritsumei.ac.jp", password: passward) { [weak self] result, error in
             guard let self = self else {return}
-            if (result?.user) != nil {
+            if (result?.user) != nil && result?.user.isEmailVerified == true {
                 let nextvc = pickerProfileViewController()
                 self.present(nextvc, animated: true, completion: nil)
             }

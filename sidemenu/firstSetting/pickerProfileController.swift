@@ -18,7 +18,9 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     let textfield_gender = UITextField()
     
     
-    var ref: DatabaseReference!
+    var BSRef: DatabaseReference!
+    
+    let userID = Auth.auth().currentUser?.uid
     
     
     
@@ -169,7 +171,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         button.addTarget(self, action: #selector(pickerProfileViewController.GONext(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
-        ref = Database.database().reference()
+        BSRef = Database.database().reference()
         
     }
     //ピッカー設定
@@ -199,6 +201,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
 let myclass = SignUpViewController()
         
         /*firebase*/
+<<<<<<< HEAD
         
         
         self.ref.childByAutoId().child("Profile").setValue([
@@ -208,6 +211,11 @@ let myclass = SignUpViewController()
                                         "name" : myclass.NameTextField.text])
         
         
+=======
+        self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
+                                                        "入学年度": textfield_enroll.text ?? "",
+                                                        "性別": textfield_gender.text ?? ""])
+>>>>>>> edit
         
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
