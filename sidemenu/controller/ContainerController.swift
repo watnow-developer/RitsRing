@@ -41,10 +41,10 @@ class ContainerController: UIViewController {
     func configureHomeController(){
         let homeController = HomeController()
         homeController.delegate = self
-
+        
         
         centerController
-         = UINavigationController(rootViewController:  homeController)
+            = UINavigationController(rootViewController:  homeController)
         view.addSubview(centerController.view)
         addChild(centerController)
         centerController.didMove(toParent: self )
@@ -54,26 +54,26 @@ class ContainerController: UIViewController {
     func configureMenuController(){
         
         if menuController == nil{
-        
+            
             menuController = MenuController()
             menuController.delegate = self
             view.insertSubview(menuController.view , at: 0)
             addChild(menuController)
             menuController.didMove(toParent: self)
-
+            
         }
         
     }
     
     
-
+    
     func animatePanel(shouldExpand:Bool, menuOption: MenuOption?){
         
         if shouldExpand{
-            //show menu 
+            //show menu
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity:0 , options: .curveEaseInOut, animations:
                 {
-                //位置情報
+                    //位置情報
                     self.centerController.view.frame.origin.x =
                         self.centerController.view.frame.width - 80
                     
@@ -81,7 +81,7 @@ class ContainerController: UIViewController {
         }else{
             //hide menu
             
-        
+            
             UIView.animate(withDuration: 0.5, delay: 0 , usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations:  {
                 //位置情報
                 self.centerController.view.frame.origin.x = 0
@@ -92,7 +92,7 @@ class ContainerController: UIViewController {
         }
         animateStatusBar()
     }
-
+    
     
     //各ボタン選択したときの動作(画面遷移）
     func didSelectMenuOption(menuOption: MenuOption){
@@ -105,9 +105,12 @@ class ContainerController: UIViewController {
             let controller = friendlistController()
             present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
         case .matchFriend:
-             let controller1 = genderSelectController()
+            let controller1 = genderSelectController()
             present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
             
+        case .logout:
+            let controller3 = SignUpViewController()
+            present(UINavigationController(rootViewController: controller3),animated: true , completion: nil)
             
         }
     }
@@ -131,4 +134,3 @@ extension ContainerController: HomeControllerDelegate{
         animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
     }
 }
-

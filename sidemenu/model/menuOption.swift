@@ -17,6 +17,7 @@ enum MenuOption: Int, CustomStringConvertible{
     case profile
     case friend
     case matchFriend
+    case logout
     
     var description: String{
         switch self {
@@ -27,6 +28,8 @@ enum MenuOption: Int, CustomStringConvertible{
             return "Friend List"
         case .matchFriend:
             return "Match Friend"
+        case .logout:
+            return "Logout"
         }
     }
     
@@ -39,6 +42,8 @@ enum MenuOption: Int, CustomStringConvertible{
         return UIImage(named:"friends") ?? UIImage()
     case .matchFriend:
         return UIImage(named:"matchfriend") ?? UIImage()
+    case .logout:
+            return UIImage(named:"logout") ?? UIImage()
 
 }
 }
