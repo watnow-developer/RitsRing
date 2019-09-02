@@ -43,11 +43,8 @@ enum MenuOption: Int, CustomStringConvertible{
     case .matchFriend:
         return UIImage(named:"matchfriend") ?? UIImage()
     case .logout:
-<<<<<<< HEAD
         return UIImage(named:"logout") ?? UIImage()
-=======
-            return UIImage(named:"logout") ?? UIImage()
->>>>>>> edit
+
 
 }
 }
