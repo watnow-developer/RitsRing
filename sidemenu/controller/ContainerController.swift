@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class ContainerController: UIViewController {
     
@@ -109,9 +111,18 @@ class ContainerController: UIViewController {
             present(UINavigationController(rootViewController: controller1),animated: true , completion: nil)
             
         case .logout:
-            let controller3 = SignUpViewController()
-            present(UINavigationController(rootViewController: controller3),animated: true , completion: nil)
-            
+          
+                do {
+                    
+                    try Auth.auth().signOut()
+                    
+                    
+                    let controller3 = SignUpViewController()
+                    present(UINavigationController(rootViewController: controller3),animated: true , completion: nil)
+                }catch let error as NSError {
+                    print("\(error.localizedDescription)")
+               
+            }
         }
     }
     func animateStatusBar(){
