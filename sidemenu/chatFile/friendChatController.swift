@@ -12,17 +12,8 @@ struct friendChatMessage {
     let text: String
     let isIncoming: Bool
     let date: Date
+
 }
-
-//extension Date {
-//    static func dateFromCustomStirng(customString: String) -> Date{
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MM/dd/yyyy"
-//        return dateFormatter.date(from: customString)  ?? Date()
-
-//    }
-//}
-
 class friendchatController : UITableViewController{
     
     fileprivate let cellId = "id1234"
@@ -150,6 +141,89 @@ class friendchatController : UITableViewController{
         cell.friendchatMessage = friendchatMessage
         return cell
     }
+    
+    //入力欄（キーボード）
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    
+    override var inputAccessoryView: UIView? {
+        return inputContainerView
+    }
+    
+    override var canBecomeFirstResponder : Bool {
+        return true
+    }
+    
+    lazy var textField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter message"
+        tf.backgroundColor = .white
+        tf.borderStyle = .roundedRect
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tf
+    }()
+    
+    
+    
+    lazy var inputContainerView: UIView = {
+        
+        let containerView = CustomView()
+        containerView.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.addSubview(textField)
+        
+        self.textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
+        self.textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
+        
+        // layoutMarginsGuide.bottomAnchorに対して制約を付ける
+        self.textField.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: -8).isActive = true
+        
+        //送信ボタン
+        let barButton: UIButton = UIButton(type: UIButton.ButtonType.system)
+        barButton.setTitle("送信", for: UIControl.State.normal)
+        barButton.frame = CGRect(x: textField.frame.width + 350, y: 5, width: 50, height: 35)
+        barButton.addTarget(self, action: #selector(buttonEvent(_:)), for: UIControl.Event.touchUpInside)
+        containerView.addSubview(barButton)
+        
+        
+        let separatorLineView = UIView()
+        separatorLineView.backgroundColor = .white
+        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(separatorLineView)
+        
+        separatorLineView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        self.textField.topAnchor.constraint(equalTo: separatorLineView.bottomAnchor, constant: 8).isActive = true
+        
+        return containerView
+        
+        
+    }()
+    
+    @objc func buttonEvent(_ sender: UIButton) {
+        // 処理を書く
+        print("send")
+    }
+    
+    
+    // ↑ここまで入力UI
+    
+    
+    
+    
+    
+    
+    
+    
     //次に行く動作
     @objc func backMain(){
         let NextController00 = ContainerController()
