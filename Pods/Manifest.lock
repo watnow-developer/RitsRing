@@ -123,12 +123,6 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.0)
-  - RxCocoa (5.0.0):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.0.0):
-    - RxSwift (~> 5)
-  - RxSwift (5.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -136,8 +130,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
-  - RxCocoa
-  - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -162,9 +154,6 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
-    - RxCocoa
-    - RxRelay
-    - RxSwift
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -188,10 +177,7 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: 9eefe2674e510fcb433d8da254b98113af46d13c
+PODFILE CHECKSUM: f3f46c3a5ae15d828c8d61b8a971ec36424ebd5d
 
 COCOAPODS: 1.6.1
