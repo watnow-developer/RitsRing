@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 
 struct ChatMessage {
@@ -35,11 +37,13 @@ class CustomView: UIView {
 }
 
 
-class chatController : UITableViewController{
+class chatController : UITableViewController, UITextFieldDelegate{
     
-
+ var databaseRef: DatabaseReference!
     
     fileprivate let cellId = "id123"
+    
+    let userID = Auth.auth().currentUser?.uid
     
 
     
@@ -80,6 +84,11 @@ class chatController : UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+  databaseRef = Database.database().reference()
+
+        
+        
         
         attemptToAssembleGroupedMessages()
         
@@ -166,6 +175,7 @@ class chatController : UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
         let chatMessage  = chatMessages[indexPath.section][indexPath.row]
         cell.chatMessage = chatMessage
+        
         return cell
     }
     
@@ -237,8 +247,15 @@ class chatController : UITableViewController{
     }()
     
     @objc func buttonEvent(_ sender: UIButton) {
-        // 処理を書く
-        print("send")
+  
+        view.endEditing(true)
+        
+        if  let message = textField.text {
+            let messageData = ["message": message]
+            databaseRef.child("Chat").child(userID ?? "").setValue(messageData)
+            
+            textField.text = ""
+        }
     }
     
     
