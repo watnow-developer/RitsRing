@@ -18,9 +18,12 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     let textfield_gender = UITextField()
     
     
-    var BSRef: DatabaseReference!
+    var BSRef = DatabaseReference()
     
     let userID = Auth.auth().currentUser?.uid
+    
+    var Count:Int = 0
+    
     
     
     
@@ -41,11 +44,11 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         //textfield
         
-        
+        if(Count >= 3){
+            Count = 0
+        }
         
         //textfield_faculty
         textfield_faculty.keyboardType = .default
@@ -174,6 +177,13 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         BSRef = Database.database().reference()
         
     }
+    
+    func judge(){
+        if(Count >= 3){
+            Count = 0
+        }
+    }
+    
     //ピッカー設定
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         active_textfield = textField
@@ -201,11 +211,19 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
 let myclass = SignUpViewController()
         
         /*firebase*/
+<<<<<<< HEAD
 
         self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
                                                         "入学年度": textfield_enroll.text ?? "",
                                                         "性別": textfield_gender.text ?? ""])
 
+=======
+        //SignUPViewControllerで作ったツリーの更新
+        Count += 1
+        self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
+                                                        "入学年度": textfield_enroll.text ?? "",
+                                                        "性別": textfield_gender.text ?? "","waitflag": Count])
+>>>>>>> e7026b49fc24fd106a33720bd584a3ce55acff0c
         
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)

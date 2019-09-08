@@ -123,6 +123,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.9.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -130,6 +131,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Firestore
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -154,6 +156,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -177,7 +180,12 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: f3f46c3a5ae15d828c8d61b8a971ec36424ebd5d
+=======
+PODFILE CHECKSUM: f961c4a73b9ee42ecaa5e80b7fc3c0f4c55e71b6
+>>>>>>> e7026b49fc24fd106a33720bd584a3ce55acff0c
 
 COCOAPODS: 1.6.1

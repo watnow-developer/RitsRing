@@ -137,12 +137,15 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
                             guard let self = self else { return }
                             if error == nil {
                                 self.Showsuccess()
+                                //firebase のツリー更新
                                 self.ref.child("User").child(user.uid).setValue(["名前": name])
                             }
                             self.showErrorIFNeeded(error)
+                            print("done_1")
                         }
                     }
                     self.showErrorIFNeeded(error)
+                    print("done_2")
                 }
             }
             self.showErrorIFNeeded(error)

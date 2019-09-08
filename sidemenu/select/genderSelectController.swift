@@ -9,8 +9,13 @@
 //以下gender selection を gs とする
 
 import UIKit
+import Firebase
 
 class genderSelectController : UIViewController{
+    
+    var Ref = DatabaseReference()
+    let userID = Auth.auth().currentUser?.uid
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,10 +23,13 @@ class genderSelectController : UIViewController{
         view.backgroundColor = .white
         
          navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-    
+        
+        
+        
         
         let controller = matchOkController()
         
@@ -34,9 +42,6 @@ class genderSelectController : UIViewController{
             style: UIAlertAction.Style.default){
                 action in
                 self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
-                
-        
-        
     }
         
         //男性
@@ -44,11 +49,9 @@ class genderSelectController : UIViewController{
         let menAction : UIAlertAction = UIAlertAction(
             title: "男性",
             style: UIAlertAction.Style.default){
-                    action in
+                action in
                 self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
         }
-    
-      
         
         gs.addAction(womenAction)
         gs.addAction(menAction)
