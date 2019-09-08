@@ -9,6 +9,7 @@
 //以下gender selection を gs とする
 
 import UIKit
+import Firebase
 
 class genderSelectController : UIViewController{
     
@@ -21,6 +22,8 @@ class genderSelectController : UIViewController{
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        
     
         
         let controller = matchOkController()

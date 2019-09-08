@@ -198,6 +198,8 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         /*firebase*/
         //SignUPViewControllerで作ったツリーの更新
+        
+       
         self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
                                                         "入学年度": textfield_enroll.text ?? "",
                                                         "性別": textfield_gender.text ?? ""])

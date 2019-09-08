@@ -22,7 +22,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     var displayfaculty:String?
     var displaygrade:String?
     
-    
+    var textlabel:UILabel?
     
     var tableview:UITableView = {
         
@@ -37,6 +37,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         super.viewDidLoad()
         
     
+        print(displayname ?? "false")
         
         LoadmyData()
         tableview.delegate = self
@@ -57,18 +58,18 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         Ref = Database.database().reference()
         //User/uid からデータの取得
-        Ref?.child("User").child(UserID ?? "").observeSingleEvent(of: .value, with:{ (snapshot) in
+        Ref?.child("User").child(UserID ?? "").observeSingleEvent(of: .value, with:{ (snapshot)  in
             
-            let data = snapshot.value as? [String: AnyObject]
-            let displayname = data!["名前"] as! String
-            let displaygender = data!["性別"] as! String
-            let displayfaculty = data!["学部"] as! String
-            let displaygrade = data!["入学年度"] as! String
+            var data = snapshot.value as? [String: AnyObject]
+            self.displayname = data?["名前"] as? String
+            self.displaygender = data?["性別"] as? String
+            self.displayfaculty = data?["学部"] as? String
+            self.displaygrade = data?["入学年度"] as? String
             
-            print(displayname as Any)
-            print(displaygrade as Any)
-            print(displayfaculty as Any)
-            print(displaygender as Any)
+            print(self.displayname as Any)
+            print(self.displaygrade as Any)
+            print(self.displayfaculty as Any)
+            print(self.displaygender as Any)
             
             self.tableview.reloadData()
             
@@ -125,15 +126,15 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         switch indexPath.section {
         case 0:
-            cell.TitleTextField.text = displayname
+            cell.textLabel?.text = self.displayname
         default:
             switch indexPath.row{
             case 0:
-                cell.TitleTextField.text = displaygender
+                cell.textLabel?.text = self.displaygender
             case 1:
-                cell.TitleTextField.text = displayfaculty
+                cell.textLabel?.text = self.displayfaculty
             default:
-                cell.TitleTextField.text = displaygrade
+                cell.textLabel?.text = self.displaygrade
             }
         }
         return cell
