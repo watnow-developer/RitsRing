@@ -65,6 +65,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
             self.displaygender = data?["性別"] as? String
             self.displayfaculty = data?["学部"] as? String
             self.displaygrade = data?["入学年度"] as? String
+            print(data?.count ?? "nil")
             
             print(self.displayname as Any)
             print(self.displaygrade as Any)
@@ -95,23 +96,25 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 4
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if(section == 0 ){
-            return ("プロフィール")
-        }else{
-            return nil
+        switch section {
+        case 0:
+            return("名前")
+        case 1:
+            return("性別")
+        case 2:
+            return("学部")
+        default :
+            return("入学年度")
+            
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(section == 0){
-            return 1
-        }else{
-            return 3
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,22 +126,22 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         cell.TitleTextField.delegate = self
         cell.backgroundColor = UIColor(red: 255/255, green: 230/255, blue: 230/250, alpha: 0.5)
+        textlabel?.textAlignment = .center
         
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = self.displayname
-        default:
-            switch indexPath.row{
-            case 0:
-                cell.textLabel?.text = self.displaygender
             case 1:
+                cell.textLabel?.text = self.displaygender
+            case 2:
                 cell.textLabel?.text = self.displayfaculty
             default:
                 cell.textLabel?.text = self.displaygrade
             }
-        }
         return cell
-    }
+        }
+    
+    
     
     
   

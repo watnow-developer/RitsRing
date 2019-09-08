@@ -141,9 +141,11 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
                                 self.ref.child("User").child(user.uid).setValue(["名前": name])
                             }
                             self.showErrorIFNeeded(error)
+                            print("done_1")
                         }
                     }
                     self.showErrorIFNeeded(error)
+                    print("done_2")
                 }
             }
             self.showErrorIFNeeded(error)
