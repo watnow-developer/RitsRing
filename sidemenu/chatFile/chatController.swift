@@ -218,16 +218,27 @@ class chatController : UITableViewController, UITextFieldDelegate{
         self.textField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8).isActive = true
         self.textField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8).isActive = true
         
+          self.textField.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -50).isActive = true
+        
         // layoutMarginsGuide.bottomAnchorに対して制約を付ける
         self.textField.bottomAnchor.constraint(equalTo: containerView.layoutMarginsGuide.bottomAnchor, constant: -8).isActive = true
         
         //送信ボタン
         let barButton: UIButton = UIButton(type: UIButton.ButtonType.system)
         barButton.setTitle("送信", for: UIControl.State.normal)
-        barButton.frame = CGRect(x: textField.frame.width + 350, y: 5, width: 50, height: 35)
+     //  barButton.frame = CGRect(x: textField.frame.width + 350, y: 5, width: 50, height: 35)
         barButton.addTarget(self, action: #selector(buttonEvent(_:)), for: UIControl.Event.touchUpInside)
         containerView.addSubview(barButton)
-   
+        barButton.translatesAutoresizingMaskIntoConstraints = false
+        barButton.tintColor = UIColor.white
+        //位置情報（送信ボタン）
+        barButton.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: +10).isActive = true
+        
+        barButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor, constant: -15).isActive = true
+        
+        barButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
+        barButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        
         
         let separatorLineView = UIView()
         separatorLineView.backgroundColor = .white
