@@ -208,23 +208,15 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         //他のクラスのメゾット
         
-let myclass = SignUpViewController()
+//let myclass = SignUpViewController()
         
         /*firebase*/
-<<<<<<< HEAD
 
         self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
                                                         "入学年度": textfield_enroll.text ?? "",
-                                                        "性別": textfield_gender.text ?? ""])
+                                                        "性別": textfield_gender.text ?? ""]) 
 
-=======
-        //SignUPViewControllerで作ったツリーの更新
-        Count += 1
-        self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
-                                                        "入学年度": textfield_enroll.text ?? "",
-                                                        "性別": textfield_gender.text ?? "","waitflag": Count])
->>>>>>> e7026b49fc24fd106a33720bd584a3ce55acff0c
-        
+
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)
         
