@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 
 
 struct ChatMessage {
@@ -39,16 +40,25 @@ class CustomView: UIView {
 
 class chatController : UITableViewController, UITextFieldDelegate{
     
+    //送信textfield
+   lazy var  textField: UITextField = {
+    
+    let tf = UITextField()
+    tf.placeholder = "Enter message"
+    tf.backgroundColor = .white
+    tf.borderStyle = .roundedRect
+    tf.translatesAutoresizingMaskIntoConstraints = false
+    tf.delegate = self
+     return tf
+    }()
+
+    
  var databaseRef: DatabaseReference!
     
     fileprivate let cellId = "id123"
     
     let userID = Auth.auth().currentUser?.uid
-    
-
-    
-    
-    
+ 
     //true 左　false 右
     
     
@@ -105,8 +115,9 @@ class chatController : UITableViewController, UITextFieldDelegate{
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         configureUI()
-       // view.addSubview(messegeTF)
+        observeMessages()
     }
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return chatMessages.count
@@ -195,15 +206,6 @@ class chatController : UITableViewController, UITextFieldDelegate{
         return true
     }
     
-    lazy var textField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter message"
-        tf.backgroundColor = .white
-        tf.borderStyle = .roundedRect
-        tf.translatesAutoresizingMaskIntoConstraints = false
-    
-        return tf
-    }()
     
     
     
@@ -226,8 +228,9 @@ class chatController : UITableViewController, UITextFieldDelegate{
         //送信ボタン
         let barButton: UIButton = UIButton(type: UIButton.ButtonType.system)
         barButton.setTitle("送信", for: UIControl.State.normal)
-     //  barButton.frame = CGRect(x: textField.frame.width + 350, y: 5, width: 50, height: 35)
-        barButton.addTarget(self, action: #selector(buttonEvent(_:)), for: UIControl.Event.touchUpInside)
+        
+        barButton.addTarget(self, action: #selector(buttonEvent), for: .touchUpInside)
+        
         containerView.addSubview(barButton)
         barButton.translatesAutoresizingMaskIntoConstraints = false
         barButton.tintColor = UIColor.white
@@ -240,6 +243,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         barButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         
+        
         let separatorLineView = UIView()
         separatorLineView.backgroundColor = .white
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false
@@ -249,7 +253,6 @@ class chatController : UITableViewController, UITextFieldDelegate{
         separatorLineView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         separatorLineView.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
         separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
         self.textField.topAnchor.constraint(equalTo: separatorLineView.bottomAnchor, constant: 8).isActive = true
         
         return containerView
@@ -257,23 +260,37 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
     }()
     
-    @objc func buttonEvent(_ sender: UIButton) {
-  
-        view.endEditing(true)
+    //送信した時の処理
+    
+    @objc func buttonEvent(){
         
-        if  let message = textField.text {
-            let messageData = ["message": message]
-            databaseRef.child("Chat").child(userID ?? "").setValue(messageData)
-            
-            textField.text = ""
+        let ref = Database.database().reference().child("Chat")
+        let childRef = ref.childByAutoId()
+        let toId = userID!
+        let fromId = Auth.auth().currentUser!.uid
+        let timestamp = NSDate().timeIntervalSince1970
+        let values = ["message" : textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
+       
+       childRef.updateChildValues(values)
+  
+//        view.endEditing(true)
+//
+//        if  let message = textField.text {
+//            let messageData = ["message": message]
+//            databaseRef.child("Chat").child(userID ?? "").setValue(messageData)
+//
+//            textField.text = ""
         }
+
+    func observeMessages(){
+        let ref = Database.database().reference().child("chat")
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            print(snapshot)
+        }, withCancel: nil)
     }
     
     
-    // ↑ここまで入力UI
-    
-    
-
     //次に行く動作
     @objc func backMain(){
         let NextController44 = SelectFriendViewController()
@@ -288,7 +305,10 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
     }
     
-  
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        buttonEvent()
+        return true
+    }
     
 
 }
