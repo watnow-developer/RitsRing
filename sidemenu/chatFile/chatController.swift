@@ -72,9 +72,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
     
     let messagesFromServer = [
-        ChatMessage(text: "here's my first message", isIncoming: true , date: Date.dateFromCustomStirng(customString: "08/11/2019")),
-        ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: true, date: Date.dateFromCustomStirng(customString: "08/10/2019 ")),
-        ChatMessage(text: "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz", isIncoming: false, date: Date()),
+   
         ChatMessage(text: "abc", isIncoming: false, date: Date()),
         ChatMessage(text: "this message should appear in the left", isIncoming: true, date: Date()),
         ChatMessage(text: "Third section message", isIncoming: true, date: Date())
@@ -187,8 +185,8 @@ class chatController : UITableViewController, UITextFieldDelegate{
     //一つのセクションに何個メッセージ(return)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return talk.count
-//        return chatMessages[section].count
+     return talk.count
+    //   return chatMessages[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -196,8 +194,8 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
         
         
-        let message = talk[indexPath.row]
-        cell.textLabel?.text = message.messagetext
+       // let message = talk[indexPath.row]
+        cell.textLabel?.text = self.messagetext
         
 //        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
 //        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
