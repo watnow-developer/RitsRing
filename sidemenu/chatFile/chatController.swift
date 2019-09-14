@@ -185,19 +185,22 @@ class chatController : UITableViewController, UITextFieldDelegate{
     //一つのセクションに何個メッセージ(return)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
      return talk.count
     //   return chatMessages[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
+     //   let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         
+         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
         
+     //  let chatmessage = talk[indexPath.row]
         
-       // let message = talk[indexPath.row]
-        cell.textLabel?.text = self.messagetext
+        let cmc = ChatMessageCell()
+        cell.messageLabel.text = self.messagetext
         
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
+      
 //        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
 //        cell.chatMessage = chatMessage
         
@@ -290,7 +293,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
 
         }
     
-    var talk = [Talkdata]()
+    var talk = [chatController]()
 
     func observeMessages(){
         let ref = Database.database().reference().child("Chat")
@@ -303,7 +306,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
                  self.fromId = dictionary["fromID"] as? String
                  self.timestamp = dictionary["time stamp"] as? NSNumber
                 
-               let message = Talkdata()
+               let message = chatController()
 //                message.setValuesForKeys(dictionary)
 //                print(message.message as Any)
                 self.talk.append(message)
