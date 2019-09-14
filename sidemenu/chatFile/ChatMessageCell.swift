@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ChatMessageCell: UITableViewCell {
     
     let messageLabel = UILabel()

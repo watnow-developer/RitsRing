@@ -8,8 +8,7 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
-import FirebaseAuth
+
 
 
 struct ChatMessage {
@@ -40,6 +39,15 @@ class CustomView: UIView {
 
 class chatController : UITableViewController, UITextFieldDelegate{
     
+    
+    
+    var fromId: String?
+    var messagetext: String?
+    var timestamp: NSNumber?
+    var toId: String?
+    
+
+    
     //送信textfield
    lazy var  textField: UITextField = {
     
@@ -55,7 +63,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
  var databaseRef: DatabaseReference!
     
-    fileprivate let cellId = "id123"
+     fileprivate let cellId = "id123"
     
     let userID = Auth.auth().currentUser?.uid
  
@@ -179,13 +187,21 @@ class chatController : UITableViewController, UITextFieldDelegate{
     //一つのセクションに何個メッセージ(return)
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chatMessages[section].count
+        return talk.count
+//        return chatMessages[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
-        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
-        cell.chatMessage = chatMessage
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
+        
+        
+        
+        let message = talk[indexPath.row]
+        cell.textLabel?.text = message.messagetext
+        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
+//        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
+//        cell.chatMessage = chatMessage
         
         return cell
     }
@@ -273,21 +289,37 @@ class chatController : UITableViewController, UITextFieldDelegate{
        
        childRef.updateChildValues(values)
   
-//        view.endEditing(true)
-//
-//        if  let message = textField.text {
-//            let messageData = ["message": message]
-//            databaseRef.child("Chat").child(userID ?? "").setValue(messageData)
-//
-//            textField.text = ""
+
         }
+    
+    var talk = [Talkdata]()
 
     func observeMessages(){
-        let ref = Database.database().reference().child("chat")
+        let ref = Database.database().reference().child("Chat")
         ref.observe(.childAdded, with: { (snapshot) in
             
-            print(snapshot)
+            if let dictionary = snapshot.value as? [String: AnyObject]{
+                
+                self.messagetext = dictionary["message"] as? String
+                 self.toId = dictionary["toID"] as? String
+                 self.fromId = dictionary["fromID"] as? String
+                 self.timestamp = dictionary["time stamp"] as? NSNumber
+                
+               let message = Talkdata()
+//                message.setValuesForKeys(dictionary)
+//                print(message.message as Any)
+                self.talk.append(message)
+                print(self.messagetext as Any)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
+            }
+            
+            
         }, withCancel: nil)
+    
     }
     
     

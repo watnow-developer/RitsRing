@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01A85F51C1C55D39581543C2 /* Pods_sidemenuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECBC6C09429593912AA9EB82 /* Pods_sidemenuTests.framework */; };
+		585DB5C7232BF72200327458 /* talkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585DB5C6232BF72200327458 /* talkController.swift */; };
 		585E156122FE086100190A7D /* genderSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E156022FE086100190A7D /* genderSelectController.swift */; };
 		585E156322FE7F9A00190A7D /* matchOkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585E156222FE7F9A00190A7D /* matchOkController.swift */; };
 		585FCA1522F5AA0200302460 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585FCA1422F5AA0200302460 /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 		58A09CB1230AA4B20085A11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */; };
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
+		58FD7D7023269CAF005C91CC /* talkdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FD7D6F23269CAF005C91CC /* talkdata.swift */; };
 		77AF71C87EEB863AFE82FEBE /* Pods_sidemenuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A124EAB0816C1F0BD7A0A8 /* Pods_sidemenuUITests.framework */; };
 		D71E0836AD3FF12FC51B3FB7 /* Pods_sidemenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC8D7ECA8308AC5F3087BB02 /* Pods_sidemenu.framework */; };
 		E76981682313B0FB00474F4A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76981672313B0FB00474F4A /* SignUpViewController.swift */; };
@@ -68,6 +70,7 @@
 		19893C1D6B04CAFDFFBBC7BB /* Pods-sidemenu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenu.release.xcconfig"; path = "Target Support Files/Pods-sidemenu/Pods-sidemenu.release.xcconfig"; sourceTree = "<group>"; };
 		2972C872BB561AAC1DCA5E74 /* Pods-sidemenuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuUITests.release.xcconfig"; path = "Target Support Files/Pods-sidemenuUITests/Pods-sidemenuUITests.release.xcconfig"; sourceTree = "<group>"; };
 		32AE3458449A0A6029863300 /* Pods-sidemenuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenuTests.release.xcconfig"; path = "Target Support Files/Pods-sidemenuTests/Pods-sidemenuTests.release.xcconfig"; sourceTree = "<group>"; };
+		585DB5C6232BF72200327458 /* talkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkController.swift; sourceTree = "<group>"; };
 		585E156022FE086100190A7D /* genderSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genderSelectController.swift; sourceTree = "<group>"; };
 		585E156222FE7F9A00190A7D /* matchOkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matchOkController.swift; sourceTree = "<group>"; };
 		585FCA1122F5AA0200302460 /* sidemenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sidemenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +108,7 @@
 		58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58A44C3722FBE4EC00C5C961 /* friendlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendlistController.swift; sourceTree = "<group>"; };
 		58A44C3A22FDE56200C5C961 /* talkUnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkUnable.swift; sourceTree = "<group>"; };
+		58FD7D6F23269CAF005C91CC /* talkdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkdata.swift; sourceTree = "<group>"; };
 		735FA906FDEE337279CCF474 /* Pods-sidemenu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sidemenu.debug.xcconfig"; path = "Target Support Files/Pods-sidemenu/Pods-sidemenu.debug.xcconfig"; sourceTree = "<group>"; };
 		AC8D7ECA8308AC5F3087BB02 /* Pods_sidemenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sidemenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76981672313B0FB00474F4A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				588BBA2C22FB07D60026FDA8 /* menuOption.swift */,
+				58FD7D6F23269CAF005C91CC /* talkdata.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 				589C897922FFEB42002CCC95 /* ChatMessageCell.swift */,
 				589EE5DF230BE2C700FC801E /* friendChatController.swift */,
 				589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */,
+				585DB5C6232BF72200327458 /* talkController.swift */,
 			);
 			path = chatFile;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				585DB5C7232BF72200327458 /* talkController.swift in Sources */,
 				585FCA4B22F5AB6500302460 /* MenuController.swift in Sources */,
 				589EE5E0230BE2C700FC801E /* friendChatController.swift in Sources */,
 				588BBA2D22FB07D60026FDA8 /* menuOption.swift in Sources */,
@@ -571,6 +578,7 @@
 				589C897A22FFEB42002CCC95 /* ChatMessageCell.swift in Sources */,
 				589C898C23000942002CCC95 /* NoSelectVC.swift in Sources */,
 				585E156322FE7F9A00190A7D /* matchOkController.swift in Sources */,
+				58FD7D7023269CAF005C91CC /* talkdata.swift in Sources */,
 				E76981682313B0FB00474F4A /* SignUpViewController.swift in Sources */,
 				589C898E2300094B002CCC95 /* yesSelectVC.swift in Sources */,
 				589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */,
