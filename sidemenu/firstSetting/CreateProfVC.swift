@@ -33,12 +33,8 @@ class CreateProfileViewController: UIViewController {
         UserView.clipsToBounds = true
         self.view.addSubview(UserView)
         
-        
-<<<<<<< HEAD
        // let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
-=======
-      //  let tapview = UITapGestureRecognizer(target: self, action:#selector(imageTapped))
->>>>>>> child
+
         //headerview.isUserInteractionEnabled = true
         // headerview.addGestureRecognizer(tapview)
         
