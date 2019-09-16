@@ -31,7 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
+<<<<<<< HEAD
         window?.rootViewController = matchOkController()
+=======
+        window?.rootViewController = ContainerController()
+>>>>>>> child
          
         return true
     }
