@@ -15,7 +15,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
     var Ref: DatabaseReference?
     var UserID = Auth.auth().currentUser?.uid
     //section1の文字配列
-    var rowtext:[String] = ["性別","学部","入学年度"]
+    var rowtext:[String] = ["gender","faculty","admissionyear"]
     
     var displayname:String?
     var displaygender:String?
@@ -61,10 +61,10 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         Ref?.child("User").child(UserID ?? "").observeSingleEvent(of: .value, with:{ (snapshot)  in
             
             var data = snapshot.value as? [String: AnyObject]
-            self.displayname = data?["名前"] as? String
-            self.displaygender = data?["性別"] as? String
-            self.displayfaculty = data?["学部"] as? String
-            self.displaygrade = data?["入学年度"] as? String
+            self.displayname = data?["name"] as? String
+            self.displaygender = data?["gender"] as? String
+            self.displayfaculty = data?["faculty"] as? String
+            self.displaygrade = data?["admissionyear"] as? String
             print(data?.count ?? "nil")
             
             print(self.displayname as Any)

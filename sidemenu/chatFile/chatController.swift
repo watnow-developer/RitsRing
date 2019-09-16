@@ -69,11 +69,10 @@ class chatController : UITableViewController, UITextFieldDelegate{
  
     //true 左　false 右
     
-    
+  
     
     let messagesFromServer = [
-   
-        ChatMessage(text: "self", isIncoming: false, date: Date()),
+   ChatMessage(text: "self", isIncoming: false, date: Date()),
         ChatMessage(text: "Third section message", isIncoming: true, date: Date())
     ]
     
@@ -194,12 +193,11 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
          let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
         
-     //  let chatmessage = talk[indexPath.row]
+    //   let chatmessage = talk[indexPath.row]
         
    //     let cmc = ChatMessageCell()
         cell.messageLabel.text = self.messagetext
-        
-      
+
 //        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
 //        cell.chatMessage = chatMessage
         
@@ -288,7 +286,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         let values = ["message" : textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
        
        childRef.updateChildValues(values)
-  
+        textField.text = ""
 
         }
     
@@ -297,6 +295,8 @@ class chatController : UITableViewController, UITextFieldDelegate{
     func observeMessages(){
         let ref = Database.database().reference().child("Chat")
         ref.observe(.childAdded, with: { (snapshot) in
+            
+          
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
@@ -308,6 +308,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
                let message = chatController()
              //   message.setValuesForKeys(dictionary)
                 self.talk.append(message)
+    
                 print(self.messagetext as Any)
                 
                 DispatchQueue.main.async {
