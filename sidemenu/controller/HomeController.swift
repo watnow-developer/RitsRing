@@ -81,7 +81,7 @@ class HomeController: UIViewController,UINavigationControllerDelegate{
     }
     
     @objc func click(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
-        let controller1 = genderSelectController()
+        let controller1 = matchOkController()
         self.present(controller1, animated: true, completion: nil)
         
     }

@@ -22,7 +22,9 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     
     let userID = Auth.auth().currentUser?.uid
     
-    var Count:Int = 0
+    var RoomIn:String?
+    
+    
     
     
     
@@ -46,10 +48,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         super.viewDidLoad()
         //textfield
         
-        if(Count >= 3){
-            Count = 0
-        }
-        
+    
         //textfield_faculty
         textfield_faculty.keyboardType = .default
         textfield_faculty.borderStyle = .roundedRect
@@ -178,11 +177,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
     }
     
-    func judge(){
-        if(Count >= 3){
-            Count = 0
-        }
-    }
+  
     
     //ピッカー設定
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -208,10 +203,10 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         
         /*firebase*/
         //SignUPViewControllerで作ったツリーの更新
-        Count += 1
-        self.BSRef.child("User").child(userID ?? "").updateChildValues(["学部": textfield_faculty.text ?? "",
-                                                        "入学年度": textfield_enroll.text ?? "",
-                                                        "性別": textfield_gender.text ?? "","waitflag": Count])
+    
+        self.BSRef.child("User").child(userID ?? "").updateChildValues(["faculty": textfield_faculty.text ?? "",
+                                                        "admissionyear": textfield_enroll.text ?? "",
+                                                        "gender": textfield_gender.text ?? "","RoomIn":"0"])
         
         let GScontroller = genderSelectController()
         self.present(UINavigationController(rootViewController: GScontroller), animated: true ,completion: nil)

@@ -130,7 +130,7 @@ class MyprofileViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         switch indexPath.section {
         case 0:
-            cell.textLabel?.text = self.displayname
+            cell.textLabel?.text =  self.displayname
             case 1:
                 cell.textLabel?.text = self.displaygender
             case 2:

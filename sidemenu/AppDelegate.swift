@@ -17,6 +17,9 @@ import FirebaseFirestore
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var RoomIn:String?
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -28,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = SignUpViewController()
+        window?.rootViewController = matchOkController()
          
         return true
     }

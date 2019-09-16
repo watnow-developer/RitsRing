@@ -13,9 +13,12 @@ import Firebase
 
 class genderSelectController : UIViewController{
     
-    var Ref = DatabaseReference()
+    var Ref = Database.database().reference()
     let userID = Auth.auth().currentUser?.uid
-
+    var flag:String?
+    var count:Int?
+   
+    let controller = matchOkController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +26,13 @@ class genderSelectController : UIViewController{
         view.backgroundColor = .white
         
          navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
+        //ルームの数を確認
+      
+        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        
-        
-        
-        let controller = matchOkController()
         
         let gs : UIAlertController = UIAlertController(title: "どっちとマッチする？", message:"選択してください" , preferredStyle:UIAlertController.Style.alert)
         
@@ -41,28 +42,30 @@ class genderSelectController : UIViewController{
             title: "女性",
             style: UIAlertAction.Style.default){
                 action in
-                self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+              
+                self.present(UINavigationController(rootViewController: self.controller), animated: true, completion: nil)
+                
     }
         
-        //男性
-        
+   
+     
         let menAction : UIAlertAction = UIAlertAction(
             title: "男性",
             style: UIAlertAction.Style.default){
                 action in
-                self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+                
+                self.present(UINavigationController(rootViewController: self.controller), animated: true, completion: nil)
         }
-        
+
         gs.addAction(womenAction)
-        gs.addAction(menAction)
+       gs.addAction(menAction)
 
         present(gs,animated:true , completion: nil)
         
     }
     
-
-    
-    
+  
+ 
     
     
 }

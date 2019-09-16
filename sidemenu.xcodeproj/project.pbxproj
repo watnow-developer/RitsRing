@@ -294,11 +294,11 @@
 			isa = PBXGroup;
 			children = (
 				58A44C3A22FDE56200C5C961 /* talkUnable.swift */,
-				585E156022FE086100190A7D /* genderSelectController.swift */,
 				585E156222FE7F9A00190A7D /* matchOkController.swift */,
 				589C898923000936002CCC95 /* SelectFriendVC.swift */,
 				589C898B23000942002CCC95 /* NoSelectVC.swift */,
 				589C898D2300094B002CCC95 /* yesSelectVC.swift */,
+				585E156022FE086100190A7D /* genderSelectController.swift */,
 				589C899523000A0C002CCC95 /* profile */,
 				589C898F2300097D002CCC95 /* friendlist */,
 			);

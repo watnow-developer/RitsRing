@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class noselectedview:UIViewController{
+    
+    let Ref =  Database.database().reference()
+    let UserID = Auth.auth().currentUser?.uid
+    var flag:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,13 +21,15 @@ class noselectedview:UIViewController{
         view.backgroundColor = .white
         
     }
+  
+    
     
     override func viewDidAppear(_ animated: Bool) {
         let Alert: UIAlertController = UIAlertController(title:"マッチできませんでした",message:nil,preferredStyle: .alert)
-        let CloseAction = UIAlertAction(title: "もう一度マッチしにいく", style: .default) {
+        let CloseAction = UIAlertAction(title: "もう一度接続", style: .default) {
             action in
             
-            let controller = genderSelectController()
+            let controller = HomeController()
             self.present(UINavigationController(rootViewController: controller),animated: true , completion: nil)
         }
         Alert.addAction(CloseAction)
