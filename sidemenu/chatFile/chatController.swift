@@ -73,8 +73,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
     let messagesFromServer = [
    
-        ChatMessage(text: "abc", isIncoming: false, date: Date()),
-        ChatMessage(text: "this message should appear in the left", isIncoming: true, date: Date()),
+        ChatMessage(text: "self", isIncoming: false, date: Date()),
         ChatMessage(text: "Third section message", isIncoming: true, date: Date())
     ]
     
@@ -197,7 +196,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
      //  let chatmessage = talk[indexPath.row]
         
-        let cmc = ChatMessageCell()
+   //     let cmc = ChatMessageCell()
         cell.messageLabel.text = self.messagetext
         
       
@@ -307,8 +306,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
                  self.timestamp = dictionary["time stamp"] as? NSNumber
                 
                let message = chatController()
-//                message.setValuesForKeys(dictionary)
-//                print(message.message as Any)
+             //   message.setValuesForKeys(dictionary)
                 self.talk.append(message)
                 print(self.messagetext as Any)
                 
