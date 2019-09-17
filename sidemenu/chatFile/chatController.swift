@@ -101,8 +101,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
   databaseRef = Database.database().reference()
 
-        
-        
+    
         
         attemptToAssembleGroupedMessages()
         
@@ -196,7 +195,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     //   let chatmessage = talk[indexPath.row]
         
    //     let cmc = ChatMessageCell()
-        cell.messageLabel.text = self.messagetext
+        cell.messageLabel.text = talk[indexPath.row]
 
 //        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
 //        cell.chatMessage = chatMessage
@@ -290,7 +289,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
 
         }
     
-    var talk = [chatController]()
+    var talk :  [String] = []
 
     func observeMessages(){
         let ref = Database.database().reference().child("Chat")
@@ -305,9 +304,9 @@ class chatController : UITableViewController, UITextFieldDelegate{
                  self.fromId = dictionary["fromID"] as? String
                  self.timestamp = dictionary["time stamp"] as? NSNumber
                 
-               let message = chatController()
+              // let message = chatController()
              //   message.setValuesForKeys(dictionary)
-                self.talk.append(message)
+                self.talk.append(dictionary["message"] as! String)
     
                 print(self.messagetext as Any)
                 
