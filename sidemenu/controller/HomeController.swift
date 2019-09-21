@@ -40,6 +40,7 @@ class HomeController: UIViewController,UINavigationControllerDelegate{
         view.backgroundColor = UIColor(red: 254/255, green: 249/255, blue: 251/255, alpha: 1)
         
         //画面遷移
+        
         clickbutton.addTarget(self, action: #selector(HomeController.click(_:)), for: .touchUpInside)
         
         view.addSubview(clickbutton)

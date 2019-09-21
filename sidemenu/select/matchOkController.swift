@@ -57,6 +57,8 @@ class matchOkController : UIViewController{
     }
     
     
+    // TODO: test data
+    let FROM_ID = "testId"
     func judgeFlag(){
         self.Ref.child("Flag").observeSingleEvent(of: .value, with: {(snapshot) in
             
@@ -72,7 +74,7 @@ class matchOkController : UIViewController{
                 self.CheckRoom()
             }else if(self.flag == "1"){
                 //ルームを作成した側
-                self.createroom()
+                self.createroom(fromId: self.FROM_ID)
                 
             }
             
@@ -83,7 +85,7 @@ class matchOkController : UIViewController{
     
     
     //flag = 1 の時
-    func createroom(){
+    func createroom(fromId: String){
         //名前を読み取りParentNameに入れる
         self.Ref.child("User").child(self.userID ?? "").observeSingleEvent(of: .value, with: {(snapshot_1)  in
             var data = snapshot_1.value as! [String:AnyObject]
@@ -98,7 +100,9 @@ class matchOkController : UIViewController{
         self.Ref.child("User").child(userID ?? "").updateChildValues(["RoomIn":"RoomName" + "\(self.count!)"])
         //マッチしますかの画面へ
         print("done")
-        self.present(UINavigationController(rootViewController: chatController()), animated: true, completion: nil)
+        let chatVc = chatController()
+        chatVc.fromId = fromId
+        self.present(UINavigationController(rootViewController: chatVc), animated: true, completion: nil)
         
     }
     
@@ -107,7 +111,7 @@ class matchOkController : UIViewController{
         self.Ref.child("Rooms").child("RoomName" +  "\(self.count!-1)").observeSingleEvent(of: .value, with: {(snapshot) in
             var data = snapshot.value as! [String:AnyObject]
             let childname = data["ChildName"] as? String
-            
+          
             print("childname is" + "\(String(describing: childname))")
             //RoomNameのChildNameが"name"の時そこに名前を入れ、ペアになる
             if(childname == "name"){
@@ -121,6 +125,7 @@ class matchOkController : UIViewController{
                 //自分のRoomInに所属しているルームを確認する
                 self.Ref.child("User").child(self.userID ?? "").updateChildValues(["RoomIn":"RoomName" + "\(self.count!-1)"])
                 //マッチしますか　のが画面へ
+      
                 self.present(UINavigationController(rootViewController: chatController()), animated: true, completion: nil)
                 
             }else if (childname != "name"){
@@ -144,10 +149,7 @@ class matchOkController : UIViewController{
         super.didReceiveMemoryWarning()
     }
     
-    
-    
-    
-    
+
     
     
 }

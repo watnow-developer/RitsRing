@@ -191,14 +191,11 @@ class chatController : UITableViewController, UITextFieldDelegate{
      //   let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         
          let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
-        
-    //   let chatmessage = talk[indexPath.row]
-        
-   //     let cmc = ChatMessageCell()
-        cell.messageLabel.text = talk[indexPath.row]
 
-//        let chatMessage  = chatMessages[indexPath.section][indexPath.row]
-//        cell.chatMessage = chatMessage
+        
+        cell.messageLabel.text = talk[indexPath.row]
+     //   cell.detailTextLabel?.text = self.toId
+
         
         return cell
     }
@@ -207,6 +204,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
     
     override func viewDidDisappear(_ animated: Bool) {
+        
         super.viewDidDisappear(animated)
     }
     
@@ -279,16 +277,19 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
         let ref = Database.database().reference().child("Chat")
         let childRef = ref.childByAutoId()
-        let toId = userID!
-        let fromId = Auth.auth().currentUser!.uid
-        let timestamp = NSDate().timeIntervalSince1970
-        let values = ["message" : textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
-       
-       childRef.updateChildValues(values)
-        textField.text = ""
-
-        }
-    
+        ref.observeSingleEvent(of: .value, with:{ (snapshot) in
+            var data = snapshot.value as? [String: AnyObject]
+            
+            let toId = self.userID!
+            let fromId = data?["fromID"]
+            let timestamp = NSDate().timeIntervalSince1970
+            let values = ["message" : self.textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
+            
+            childRef.updateChildValues(values)
+            self.textField.text = ""
+            
+        })
+    }
     var talk :  [String] = []
 
     func observeMessages(){
@@ -301,10 +302,9 @@ class chatController : UITableViewController, UITextFieldDelegate{
                 
                 self.messagetext = dictionary["message"] as? String
                  self.toId = dictionary["toID"] as? String
-                 self.fromId = dictionary["fromID"] as? String
+            //     self.fromId = dictionary["fromID"] as? String
                  self.timestamp = dictionary["time stamp"] as? NSNumber
                 
-              // let message = chatController()
              //   message.setValuesForKeys(dictionary)
                 self.talk.append(dictionary["message"] as! String)
     
