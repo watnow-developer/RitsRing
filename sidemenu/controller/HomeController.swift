@@ -77,11 +77,12 @@ class HomeController: UIViewController,UINavigationControllerDelegate{
         navigationController?.navigationBar.barStyle = .black
         navigationItem.title = "RiRi"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "san icon") .withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenuToggle))
+   
         
         
     }
     
-    @objc func click(_ sender: UIButton) {// selectorで呼び出す場合Swift4からは「@objc」をつける。
+    @objc func click(_ sender: UIButton) {
         let controller1 = matchOkController()
         self.present(controller1, animated: true, completion: nil)
         
