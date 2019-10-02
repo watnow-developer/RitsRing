@@ -14,7 +14,7 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
     
     var maillabel:UILabel = {
         var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 400, height: 30))
-        label.text = "メールアドレス(RAINBOWIDを入れて下さい）"
+        label.text = "メールアドレス(RAINBOWIDのみ）"
         label.textColor = UIColor.black
         return label
     }()
@@ -47,7 +47,7 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
     }()
     
     var NewButton:UIButton = {
-        var button = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height/3*2, width: 200, height: 50))
+        var button = UIButton(frame: CGRect(x: 100, y: UIScreen.main.bounds.height/3 + 100, width: 200, height: 50))
         button.backgroundColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         button.setTitle("戻る", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -104,6 +104,18 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        let text = textField.text
+        self.signInMailTextField.text = text
+        self.signInPassTextField.text = text
+        
+        return true
+    }
     
 }
 
