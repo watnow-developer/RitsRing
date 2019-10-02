@@ -10,7 +10,7 @@ import UIKit
 
 import FirebaseCore
 import FirebaseFirestore
-
+import Firebase
 
 
 @UIApplicationMain
@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var RoomIn:String?
+      var toId: String?
     
 
 
@@ -26,12 +27,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+          let userID = Auth.auth().currentUser?.uid
         
         let db = Firestore.firestore()
         print(db)
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = SignUpViewController()
+        
+  
+       
+               
+        if userID==nil{
+            window?.rootViewController = SignUpViewController()
+        }
+       else {
+             window?.rootViewController = ContainerController()
+            
+        }
+        
 
          
         return true
