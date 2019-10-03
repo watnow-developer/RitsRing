@@ -5,7 +5,6 @@
 //  Created by yu on 2019/08/11.
 //  Copyright © 2019 yu. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -27,7 +26,6 @@ extension Date {
 }
 
 //for 入力UI
-
 class CustomView: UIView {
     
 
@@ -72,7 +70,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
   
     
     let messagesFromServer = [
-   ChatMessage(text: "self", isIncoming: false, date: Date()),
+
         ChatMessage(text: "Third section message", isIncoming: true, date: Date())
     ]
     
@@ -190,14 +188,28 @@ class chatController : UITableViewController, UITextFieldDelegate{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      //   let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cellId")
         
-         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
-
+//         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)as!ChatMessageCell
+        let cmc = ChatMessageCell()
         
-        cell.messageLabel.text = talk[indexPath.row]
+        cmc.messageLabel.text = talk[indexPath.row]
+        
+        toId = toid[indexPath.row]
+        if userID==toId{
+            
+            cmc.leadingConstraint.isActive = false
+            cmc.trailingConstraint.isActive = true
+           
+        } else  {
+          
+            cmc.leadingConstraint.isActive = true
+            cmc.trailingConstraint.isActive = false
+          
+        }
+     
+        
      //   cell.detailTextLabel?.text = self.toId
-
         
-        return cell
+        return cmc
     }
     
     //入力欄（キーボード）
@@ -291,6 +303,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         })
     }
     var talk :  [String] = []
+    var toid :  [String] = []
 
     func observeMessages(){
         let ref = Database.database().reference().child("Chat")
@@ -301,14 +314,13 @@ class chatController : UITableViewController, UITextFieldDelegate{
             if let dictionary = snapshot.value as? [String: AnyObject]{
                 
                 self.messagetext = dictionary["message"] as? String
-                 self.toId = dictionary["toID"] as? String
+               //  self.toId = dictionary["toID"] as? String
             //     self.fromId = dictionary["fromID"] as? String
                  self.timestamp = dictionary["time stamp"] as? NSNumber
                 
              //   message.setValuesForKeys(dictionary)
                 self.talk.append(dictionary["message"] as! String)
-    
-                print(self.messagetext as Any)
+                self.toid.append(dictionary["toID"] as! String)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()

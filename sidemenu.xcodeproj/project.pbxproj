@@ -34,8 +34,6 @@
 		589C8993230009CC002CCC95 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */; };
 		589C899723000A47002CCC95 /* FriendProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899623000A47002CCC95 /* FriendProfileVC.swift */; };
 		589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589C899823000B3C002CCC95 /* pickerProfileController.swift */; };
-		589EE5E0230BE2C700FC801E /* friendChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE5DF230BE2C700FC801E /* friendChatController.swift */; };
-		589EE5E2230BE2E200FC801E /* friendChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */; };
 		58A09CB1230AA4B20085A11B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */; };
 		58A44C3822FBE4EC00C5C961 /* friendlistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3722FBE4EC00C5C961 /* friendlistController.swift */; };
 		58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A44C3A22FDE56200C5C961 /* talkUnable.swift */; };
@@ -100,8 +98,6 @@
 		589C8992230009CC002CCC95 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextInputTableViewCell.swift; path = sidemenu/select/profile/TextInputTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		589C899623000A47002CCC95 /* FriendProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendProfileVC.swift; path = "takitouのコピー/FriendProfileVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C899823000B3C002CCC95 /* pickerProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pickerProfileController.swift; sourceTree = "<group>"; };
-		589EE5DF230BE2C700FC801E /* friendChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendChatController.swift; sourceTree = "<group>"; };
-		589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendChatMessageCell.swift; sourceTree = "<group>"; };
 		58A09CB0230AA4B20085A11B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58A44C3722FBE4EC00C5C961 /* friendlistController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendlistController.swift; sourceTree = "<group>"; };
 		58A44C3A22FDE56200C5C961 /* talkUnable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = talkUnable.swift; sourceTree = "<group>"; };
@@ -253,8 +249,6 @@
 			children = (
 				589C897722FFEB03002CCC95 /* chatController.swift */,
 				589C897922FFEB42002CCC95 /* ChatMessageCell.swift */,
-				589EE5DF230BE2C700FC801E /* friendChatController.swift */,
-				589EE5E1230BE2E200FC801E /* friendChatMessageCell.swift */,
 			);
 			path = chatFile;
 			sourceTree = "<group>";
@@ -559,7 +553,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				585FCA4B22F5AB6500302460 /* MenuController.swift in Sources */,
-				589EE5E0230BE2C700FC801E /* friendChatController.swift in Sources */,
 				588BBA2D22FB07D60026FDA8 /* menuOption.swift in Sources */,
 				589C899923000B3C002CCC95 /* pickerProfileController.swift in Sources */,
 				E769816A2313B14600474F4A /* SignInViewController.swift in Sources */,
@@ -567,7 +560,6 @@
 				585FCA4722F5AB1000302460 /* ContainerController.swift in Sources */,
 				58A44C3B22FDE56200C5C961 /* talkUnable.swift in Sources */,
 				588BB9E522F5E1670026FDA8 /* Protocols.swift in Sources */,
-				589EE5E2230BE2E200FC801E /* friendChatMessageCell.swift in Sources */,
 				589C897A22FFEB42002CCC95 /* ChatMessageCell.swift in Sources */,
 				589C898C23000942002CCC95 /* NoSelectVC.swift in Sources */,
 				585E156322FE7F9A00190A7D /* matchOkController.swift in Sources */,
