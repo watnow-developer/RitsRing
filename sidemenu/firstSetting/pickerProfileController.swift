@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
 
 class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate,UITextFieldDelegate{
     
@@ -18,7 +19,9 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
     let textfield_gender = UITextField()
     
     
-    var BSRef = DatabaseReference()
+    let db = Firestore.firestore()
+   
+
     
     let userID = Auth.auth().currentUser?.uid
     
@@ -173,7 +176,7 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         button.addTarget(self, action: #selector(pickerProfileViewController.GONext(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
-        BSRef = Database.database().reference()
+       
         
     }
     
@@ -196,6 +199,9 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
         myPickerView.reloadAllComponents()
         
         return true
+        
+        
+        
     }
     
     
@@ -209,9 +215,9 @@ class pickerProfileViewController: UIViewController,UIPickerViewDataSource,UIPic
 
         //SignUPViewControllerで作ったツリーの更新
     
-        self.BSRef.child("User").child(userID ?? "").updateChildValues(["faculty": textfield_faculty.text ?? "",
+        self.db.collection("Users").document(userID ?? "").setData(["faculty": textfield_faculty.text ?? "",
                                                         "admissionyear": textfield_enroll.text ?? "",
-                                                        "gender": textfield_gender.text ?? "","RoomIn":"0"])
+                                                        "gender": textfield_gender.text ?? "","RoomIn":"0",],merge: true)
         
 
         let GScontroller = genderSelectController()
