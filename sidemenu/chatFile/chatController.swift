@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import FirebaseCore
 
 
 
@@ -59,7 +60,8 @@ class chatController : UITableViewController, UITextFieldDelegate{
     }()
 
     
- var databaseRef: DatabaseReference!
+ var db: Firestore!
+    var chat:CollectionReference!
     
      fileprivate let cellId = "id123"
     
@@ -97,8 +99,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-  databaseRef = Database.database().reference()
-
+        self.db = Firestore.firestore()
     
         
         attemptToAssembleGroupedMessages()
@@ -194,6 +195,7 @@ class chatController : UITableViewController, UITextFieldDelegate{
         cmc.messageLabel.text = talk[indexPath.row]
         
         toId = toid[indexPath.row]
+
         if userID==toId{
             
             cmc.leadingConstraint.isActive = false
@@ -287,49 +289,112 @@ class chatController : UITableViewController, UITextFieldDelegate{
     
     @objc func buttonEvent(){
         
-        let ref = Database.database().reference().child("Chat")
-        let childRef = ref.childByAutoId()
-        ref.observeSingleEvent(of: .value, with:{ (snapshot) in
-            var data = snapshot.value as? [String: AnyObject]
+        let db = Firestore.firestore()
+ 
+        
+        
+        let toId = self.userID!
+      //  let fromId = document.get("fromID") as? String
+        let timestamp = NSDate().timeIntervalSince1970
+                
+        
+        db.collection("Chat").document("message").setData(["message" : self.textField.text!,"toID" : toId,/*"fromID" : fromId!,*/ "time stamp" : timestamp] as [String : Any])
+        
+        self.textField.text = ""
+        
+        
+        
+        /*
+        
+        
+        
+        //let ref = Database.database().reference().child("Chat")
+        self.chat = db.collection("Chat")
+        
+       // let childRef = ref.childByAutoId()
+            
+        
+        //ref.observeSingleEvent(of: .value, with:{ (snapshot) in
+        self.chat.addSnapshotListener { (QuerySnapshot, err) in
+      
+        var data = QuerySnapshot  as? [String: AnyObject]
             
             let toId = self.userID!
             let fromId = data?["fromID"]
-            let timestamp = NSDate().timeIntervalSince1970
-            let values = ["message" : self.textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
+           let timestamp = NSDate().timeIntervalSince1970   
+            
+            
+   // svc.db.collection("Users").document(user.uid).setData(["name": name])
+            self.db.collection("Users").document(self.userID ?? "").setData(["message" : self.textField.text!,"toID" : toId,"fromID" : fromId!, "time stamp" : timestamp] as [String : Any])
+            
+         //   let values = ["message" : self.textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
             
             childRef.updateChildValues(values)
-            self.textField.text = ""
-            
-        })
-    }
+ 
+  */
+        }
+
+
+    
     var talk :  [String] = []
     var toid :  [String] = []
 
     func observeMessages(){
-        let ref = Database.database().reference().child("Chat")
-        ref.observe(.childAdded, with: { (snapshot) in
+        
+        let db = Firestore.firestore()
+        
+        db.collection("Chat").document("message").getDocument { (document, error) in
             
-          
             
-            if let dictionary = snapshot.value as? [String: AnyObject]{
-                
-                self.messagetext = dictionary["message"] as? String
-               //  self.toId = dictionary["toID"] as? String
-            //     self.fromId = dictionary["fromID"] as? String
-                 self.timestamp = dictionary["time stamp"] as? NSNumber
-                
-             //   message.setValuesForKeys(dictionary)
-                self.talk.append(dictionary["message"] as! String)
-                self.toid.append(dictionary["toID"] as! String)
-                
-                DispatchQueue.main.async {
+            if let document = document,document.exists{
+                self.messagetext = document.get("message") as? String
+                print(self.messagetext) as? String
+                self.toId = document.get("toID") as? String
+                //self.fromId = document.get("fromId") as? String
+                self.timestamp = document.get("time stamp") as? NSNumber
+     
+                self.talk.append(document["message"] as! String)
+               self.toid.append(document["toID"] as! String)
+               
+              DispatchQueue.main.async
+                {
                     self.tableView.reloadData()
-                }
-
+                    }
+                    
+                
+            }else{
+                print("iwueg")
             }
             
+        }
+        
+        
+       
+     //   let ref = Database.database().reference().child("Chat")
+//         self.chat = db.collection("Chat")
+//        chat.observe(.childAdded, with: { (snapshot) in
+//
+          
+//
+//            if let dictionary = snapshot.value as? [String: AnyObject]{
+//
+//                self.messagetext = dictionary["message"] as? String
+//               //  self.toId = dictionary["toID"] as? String
+//            //     self.fromId = dictionary["fromID"] as? String
+//                 self.timestamp = dictionary["time stamp"] as? NSNumber
+//
+//             //   message.setValuesForKeys(dictionary)
+//                self.talk.append(dictionary["message"] as! String)
+//                self.toid.append(dictionary["toID"] as! String)
+//
+//                DispatchQueue.main.async
+ //                   self.tableView.reloadData()
+ //               }
+
             
-        }, withCancel: nil)
+
+            
+       // }, withCancel: nil)
     
     }
     

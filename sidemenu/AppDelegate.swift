@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-          let userID = Auth.auth().currentUser?.uid
+        let userID = Auth.auth().currentUser?.uid
         
         let db = Firestore.firestore()
         print(db)

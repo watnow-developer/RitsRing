@@ -39,8 +39,8 @@ class matchOkController : UIViewController{
             
             self.judgeFlag()
             
-            //let ChatController = chatController()
-           // self.present(UINavigationController(rootViewController: ChatController),animated: true , completion: nil)
+            let ChatController = chatController()
+            self.present(UINavigationController(rootViewController: ChatController),animated: true , completion: nil)
         }
         
         let noAction : UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel){
@@ -60,6 +60,11 @@ class matchOkController : UIViewController{
     // TODO: test data
     let FROM_ID = "testId"
     func judgeFlag(){
+        
+        
+        
+        
+        /*
         //User から自分名前を引っ張ってくる
         db.collection("Users").getDocuments { (querySnapshot, err) in
             if let err = err {
@@ -68,7 +73,7 @@ class matchOkController : UIViewController{
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     self.username = document.get("name") as? String
-                    print(self.username!)
+                print(self.username!)
                 }
                 //waitRoom
                 self.db.collection("waitRooms").whereField("Closed", isEqualTo: true).limit(to: 1).getDocuments() { (querySnapshot, err) in
@@ -86,16 +91,16 @@ class matchOkController : UIViewController{
                 }
 
                 
-                /*
+                
                 //部屋の親
                 print("僕の名前は\(self.username ?? "error")")
                 self.db.collection("Rooms").document(self.userID ?? "").setData(["ParentName": self.username!,"ChildName": "" ])
                 //waitRoomsに募集してることを出す
                 self.db.collection("waitRooms").document(self.userID!).setData(["Closed": false], merge: false)
-                */
+       
             }
         }
-        
+        */
       }
         
         
