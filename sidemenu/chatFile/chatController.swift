@@ -298,40 +298,14 @@ class chatController : UITableViewController, UITextFieldDelegate{
         let timestamp = NSDate().timeIntervalSince1970
                 
         
-        db.collection("Chat").document("message").setData(["message" : self.textField.text!,"toID" : toId,/*"fromID" : fromId!,*/ "time stamp" : timestamp] as [String : Any])
+        db.collection("Chat").document("message").collection("messages").addDocument(data: ["message" : self.textField.text!,"toID" : toId,/*"fromID" : fromId!,*/ "time stamp" : timestamp] as [String : Any])
         
+
         self.textField.text = ""
         
         
         
-        /*
-        
-        
-        
-        //let ref = Database.database().reference().child("Chat")
-        self.chat = db.collection("Chat")
-        
-       // let childRef = ref.childByAutoId()
-            
-        
-        //ref.observeSingleEvent(of: .value, with:{ (snapshot) in
-        self.chat.addSnapshotListener { (QuerySnapshot, err) in
-      
-        var data = QuerySnapshot  as? [String: AnyObject]
-            
-            let toId = self.userID!
-            let fromId = data?["fromID"]
-           let timestamp = NSDate().timeIntervalSince1970   
-            
-            
-   // svc.db.collection("Users").document(user.uid).setData(["name": name])
-            self.db.collection("Users").document(self.userID ?? "").setData(["message" : self.textField.text!,"toID" : toId,"fromID" : fromId!, "time stamp" : timestamp] as [String : Any])
-            
-         //   let values = ["message" : self.textField.text!, "toID" : toId , "fromID" : fromId, "time stamp" : timestamp] as [String : Any]
-            
-            childRef.updateChildValues(values)
- 
-  */
+   
         }
 
 
@@ -343,70 +317,50 @@ class chatController : UITableViewController, UITextFieldDelegate{
         
         let db = Firestore.firestore()
         
-        db.collection("Chat").document("message").getDocument { (document, error) in
+        db.collection("Chat").document("message").collection("messages").addSnapshotListener { (snapshot, error) in
             
-            
-            if let document = document,document.exists{
-                self.messagetext = document.get("message") as? String
-                print(self.messagetext) as? String
-                self.toId = document.get("toID") as? String
-                //self.fromId = document.get("fromId") as? String
-                self.timestamp = document.get("time stamp") as? NSNumber
-     
-                self.talk.append(document["message"] as! String)
-               self.toid.append(document["toID"] as! String)
-               
+            self.talk = []
+            self.toid = []
+            snapshot?.documents.forEach({ (document) in
+                
+                if document.exists{
+                               self.messagetext = document.get("message") as? String
+                               print(self.messagetext) as? String
+                               self.toId = document.get("toID") as? String
+                               //self.fromId = document.get("fromId") as? String
+                               self.timestamp = document.get("time stamp") as? NSNumber
+                    
+                               self.talk.append(document["message"] as! String)
+                              self.toid.append(document["toID"] as! String)
+                }
+                
+            })
+           
               DispatchQueue.main.async
                 {
                     self.tableView.reloadData()
                     }
                     
-                
-            }else{
-                print("iwueg")
-            }
             
         }
-        
-        
-       
-     //   let ref = Database.database().reference().child("Chat")
-//         self.chat = db.collection("Chat")
-//        chat.observe(.childAdded, with: { (snapshot) in
-//
-          
-//
-//            if let dictionary = snapshot.value as? [String: AnyObject]{
-//
-//                self.messagetext = dictionary["message"] as? String
-//               //  self.toId = dictionary["toID"] as? String
-//            //     self.fromId = dictionary["fromID"] as? String
-//                 self.timestamp = dictionary["time stamp"] as? NSNumber
-//
-//             //   message.setValuesForKeys(dictionary)
-//                self.talk.append(dictionary["message"] as! String)
-//                self.toid.append(dictionary["toID"] as! String)
-//
-//                DispatchQueue.main.async
- //                   self.tableView.reloadData()
- //               }
-
-            
-
-            
-       // }, withCancel: nil)
-    
     }
     
     
     //次に行く動作
     @objc func backMain(){
-        let NextController44 = SelectFriendViewController()
-        self.present(NextController44, animated: true ,completion: nil)
+        db.collection("Chat").document("message").collection("messages").getDocuments { snapshot, error in
+            let batch = self.db.batch()
+            snapshot?.documents.forEach { document in
+              batch.deleteDocument(document.reference)
+            }
+            batch.commit { _ in
+                let NextController44 = SelectFriendViewController()
+                self.present(NextController44, animated: true ,completion: nil)
+            }
+
+        }
     }
-    
-    
-    
+
     
     func configureUI(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "backbutton").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backMain ))
