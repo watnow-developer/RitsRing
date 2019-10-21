@@ -34,11 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-  
-     
-     
         
-       
         if userID == nil{
             window?.rootViewController = SignUpViewController()
         }
@@ -46,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              window?.rootViewController = ContainerController()
             
         }
-        
+ 
 
          
         return true
