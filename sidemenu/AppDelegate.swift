@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = SignUpViewController()
         }
        else {
-             window?.rootViewController = ContainerController()
+             window?.rootViewController = FailViewController/*ContainerController*/()
             
         }
         
