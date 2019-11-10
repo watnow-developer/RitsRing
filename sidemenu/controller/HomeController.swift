@@ -12,10 +12,14 @@ import UIKit
 
 class HomeController: UIViewController,UINavigationControllerDelegate{
     
-    let image = UIImage(named:"click")!
+//    let image = UIImage(named:"click")!
     var screenWidth:CGFloat = 0
     var screenHeight:CGFloat = 0
-    let clickbutton = UIButton()
+    let Ritsringhome = UIImageView()
+    let Squarebox = UIButton()
+    let Squareboxbutton = UIImage(named:"squarebox")!
+    let  Matchfriendimage = UIImageView()
+//    let clickbutton = UIButton()
     
     // Mark - Properties
     
@@ -28,37 +32,13 @@ class HomeController: UIViewController,UINavigationControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // イラストbutton
-        screenWidth = view.frame.size.width
-        screenHeight = view.frame.size.height
-        clickbutton.frame = CGRect(x:0, y:180,
-                                   width:screenWidth, height:screenWidth)
-        
-        button_init(button: clickbutton)
-        self.view.addSubview(clickbutton)
-        
-        view.backgroundColor = UIColor(red: 254/255, green: 249/255, blue: 251/255, alpha: 1)
-        
-        //画面遷移
-        
-        clickbutton.addTarget(self, action: #selector(HomeController.click(_:)), for: .touchUpInside)
-        
-        view.addSubview(clickbutton)
+    ritsringhome()
+        squarebox()
+matchfriendimage()
+         
+      view.backgroundColor =  UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
     }
-    
-    func button_init(button:UIButton){
-        clickbutton.setImage(image, for: .normal)
-        
-        
-        // Aspect Fit
-        button.imageView?.contentMode = .scaleAspectFit
-        
-        // Horizontal 拡大
-        button.contentHorizontalAlignment = .fill
-        
-        // Vertical 拡大
-        button.contentVerticalAlignment = .fill
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configureNavigationBar()
@@ -75,17 +55,56 @@ class HomeController: UIViewController,UINavigationControllerDelegate{
     func configureNavigationBar(){
         navigationController?.navigationBar.barTintColor = UIColor(red: 230/255, green: 124/255, blue: 115/255, alpha: 1)
         navigationController?.navigationBar.barStyle = .black
-        navigationItem.title = "RiRi"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "san icon") .withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleMenuToggle))
    
         
         
     }
     
+   private func ritsringhome(){
+        Ritsringhome.image = UIImage(named:"ritsringhome")!
+        
+        let screenW:CGFloat = view.frame.size.width
+        let screenH:CGFloat = view.frame.size.height
+        
+    Ritsringhome.frame = CGRect(x:30.5/414, y:236.5/896, width:354, height:102)
+       Ritsringhome.center = CGPoint(x:screenW/2, y:screenH/4)
+        self.view.addSubview(Ritsringhome)
+    }
+    private func squarebox(){
+           
+           let screenW:CGFloat = view.frame.size.width
+           let screenH:CGFloat = view.frame.size.height
+           
+           Squarebox.frame = CGRect(x:48.12/414, y:415.57/896, width:321.38, height:272.05)
+        Squarebox.center = CGPoint(x:screenW/2, y:screenH/1.8)
+           self.view.addSubview(Squarebox)
+           
+
+          Squarebox.addTarget(self, action: #selector(click(_:)), for: .touchUpInside)
+           Squarebox.setImage(Squareboxbutton, for: .normal)
+                  
+       }
+       private func matchfriendimage(){
+         Matchfriendimage.image = UIImage(named:"matchfriend-1")!
+           
+           let screenW:CGFloat = view.frame.size.width
+           let screenH:CGFloat = view.frame.size.height
+           
+         Matchfriendimage.frame = CGRect(x:48/414, y:432/896, width:319, height:239.78)
+        Matchfriendimage.center = CGPoint(x:screenW/2, y:screenH/1.8)
+           self.view.addSubview(Matchfriendimage)
+           
+       }
+
+    
+    
+    
     @objc func click(_ sender: UIButton) {
         let controller1 = matchOkController()
         self.present(controller1, animated: true, completion: nil)
         
     }
+    
     
 }

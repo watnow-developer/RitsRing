@@ -76,12 +76,12 @@ class FailViewController:UIViewController
     
     private func failmessimage(){
         
-        Failmessimage.image = UIImage(named:"omedetou")!
+        Failmessimage.image = UIImage(named:"failmess")!
         
         let screenW:CGFloat = view.frame.size.width
         let screenH:CGFloat = view.frame.size.height
         
-        Failmessimage.frame = CGRect(x:107/414, y:558/896, width:200, height:106)
+        Failmessimage.frame = CGRect(x:107/414, y:558/896, width:180, height:106)
         Failmessimage.center = CGPoint(x:screenW/2, y:screenH/1.3)
         self.view.addSubview(Failmessimage)
     }
