@@ -91,7 +91,6 @@ class matchOkController : UIViewController{
                 
             }
             
-            
             //let ChatController = chatController()
             // self.present(UINavigationController(rootViewController: ChatController),animated: true , completion: nil)
         }
@@ -131,8 +130,6 @@ class matchOkController : UIViewController{
                 self.JudgeActiveUser()
         }
     }
-    
-    
     
     func RecivedUid(recived_uid:String){
         let ramdomchat = self.db.collection("RamdomChat")

@@ -110,6 +110,7 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
         let text = textField.text
         self.signInMailTextField.text = text
         self.signInPassTextField.text = text
