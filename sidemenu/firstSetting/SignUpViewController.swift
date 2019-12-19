@@ -13,8 +13,6 @@ import FirebaseCore
 
 class SignUpViewController:UIViewController, UITextFieldDelegate{
     
-    var db = Firestore.firestore()
-    
     var maillabel:UILabel = {
         var label = UILabel(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-95, width: 400, height: 30))
         label.text = "メールアドレス(RAINBOWIDのみ)"
@@ -139,7 +137,9 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
                             if error == nil {
                                 self.Showsuccess()
                                 //firebase のツリー更新
-                                self.db.collection("Users").document(user.uid).setData(["name": name])
+                                
+                                let db = Firestore.firestore()
+                                db.collection("Users").document(user.uid).setData(["name": name])
                             }
                             self.showErrorIFNeeded(error)
                             print("done_1")

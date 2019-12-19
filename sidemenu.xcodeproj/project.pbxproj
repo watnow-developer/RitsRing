@@ -88,7 +88,7 @@
 		588BBA2C22FB07D60026FDA8 /* menuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuOption.swift; sourceTree = "<group>"; };
 		589C897722FFEB03002CCC95 /* chatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatController.swift; sourceTree = "<group>"; };
 		589C897922FFEB42002CCC95 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
-		589C898322FFFB2F002CCC95 /* CreateProfVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfVC.swift; sourceTree = "<group>"; };
+		589C898322FFFB2F002CCC95 /* CreateProfVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProfVC.swift; path = firstSetting/CreateProfVC.swift; sourceTree = "<group>"; };
 		589C898523000902002CCC95 /* PassCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PassCodeVC.swift; path = "takitouのコピー/PassCodeVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C898623000902002CCC95 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = "takitouのコピー/LoginVC.swift"; sourceTree = SOURCE_ROOT; };
 		589C898923000936002CCC95 /* SelectFriendVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectFriendVC.swift; path = "takitouのコピー/SelectFriendVC.swift"; sourceTree = SOURCE_ROOT; };
@@ -177,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				589C898222FFFB12002CCC95 /* firstSetting */,
+				589C898322FFFB2F002CCC95 /* CreateProfVC.swift */,
 				589C897622FFEACB002CCC95 /* chatFile */,
 				58A44C3922FDE43200C5C961 /* select */,
 				585FCA4522F5AA5F00302460 /* Utils */,
@@ -261,7 +262,6 @@
 				E76981692313B14600474F4A /* SignInViewController.swift */,
 				589C898523000902002CCC95 /* PassCodeVC.swift */,
 				589C898623000902002CCC95 /* LoginVC.swift */,
-				589C898322FFFB2F002CCC95 /* CreateProfVC.swift */,
 			);
 			path = firstSetting;
 			sourceTree = "<group>";
