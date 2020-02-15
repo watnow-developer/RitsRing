@@ -35,13 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         
-       // if userID == nil{
-            window?.rootViewController = SignUpViewController()
-        //}
-      // else {
-           //  window?.rootViewController = ContainerController()
-            
-     //   }
+      if userID == nil{
+          window?.rootViewController = SignUpViewController()
+       }else {
+      window?.rootViewController = ContainerController()
+       }
  
 
          

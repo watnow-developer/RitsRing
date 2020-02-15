@@ -97,7 +97,8 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
         Auth.auth().signIn(withEmail: email + "@ed.ritsumei.ac.jp", password: passward) { [weak self] result, error in
             guard let self = self else {return}
             if (result?.user) != nil && result?.user.isEmailVerified == true {
-                let nextvc = pickerProfileViewController()
+              //////一時的な変更    let nextvc = pickerProfileViewController()
+                let nextvc  = HomeController()
                 self.present(nextvc, animated: true, completion: nil)
             }
             self.showErrorIFNeeded(error)
@@ -110,11 +111,6 @@ class SignInViewController:UIViewController, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
-        let text = textField.text
-        self.signInMailTextField.text = text
-        self.signInPassTextField.text = text
-        
         return true
     }
     

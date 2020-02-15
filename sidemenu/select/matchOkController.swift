@@ -12,7 +12,7 @@ import FirebaseCore
 class matchOkController : UIViewController{
     
     var Ref = Database.database().reference()
-    var db = Firestore.firestore()
+    let db = Firestore.firestore()
     let userID = Auth.auth().currentUser?.uid
     var username:String? //名前
     var pare_user:String!
@@ -38,22 +38,11 @@ class matchOkController : UIViewController{
         
         view.addSubview(activityIndicatorView)
     
-        
+        /*
         let ramdomchat = self.db.collection("RamdomChat").document(self.userID ?? "")
         ramdomchat.setData(["temp":"1"])
         ramdomchat.updateData(["temp":FieldValue.delete()])
-        
-        let user_ref = self.db.collection("Users").document(userID ?? "")
-        
-        user_ref.getDocument { (document, error) in
-            if let document = document, document.exists {
-                self.username = document.get("name") as? String
-                print("Document data: \(self.username!)")
-            } else {
-                print("Document does not exist")
-            }
-        }
-        
+        */
     }
     
     
@@ -64,35 +53,17 @@ class matchOkController : UIViewController{
         let yesAction : UIAlertAction = UIAlertAction(title: "はい", style: UIAlertAction.Style.default){
             action in
             
-            
-            let active_user = self.db.collection("ActiveUser")
-            active_user.document(self.userID ?? "").setData(["temp":"1"])
-            
             //インジケータの開始の宣言
             
             self.activityIndicatorView.startAnimating()
-             self.JudgeActiveUser()
+            self.db.collection("ActiveUser").document(self.userID ?? "").updateData(["temp":"1"])
+            self.listenStart()
             
-            DispatchQueue.global(qos: .default).async {
-                // 非同期処理などを実行（今回は５秒間待つだけ）
-                Thread.sleep(forTimeInterval: 5)
-      
-                // 非同期処理などが終了したらメインスレッドでアニメーション終了
-                DispatchQueue.main.async {
-                    // アニメーション終了
-                     self.db.collection("ActiveUser").document(self.userID ?? "").updateData(["temp":FieldValue.delete()])
-                    // self.db.collection("RomdomChat").document(self.userID ?? "").updateData(["temp":FieldValue.delete()])
-                     self.flag = 0
-                    
-                    //終わると同時に済ませる処理を書く
-                    self.activityIndicatorView.stopAnimating()
-                    
-                }
-                
+            DispatchQueue.main.asyncAfter(deadline: .now()+5){
+                //終わると同時に済ませる処理を書く
+                self.activityIndicatorView.stopAnimating()
             }
-            
-            //let ChatController = chatController()
-            // self.present(UINavigationController(rootViewController: ChatController),animated: true , completion: nil)
+        
         }
         //「いいえ」を押した時の処理
         let noAction : UIAlertAction = UIAlertAction(title: "いいえ", style: UIAlertAction.Style.cancel){
@@ -107,69 +78,153 @@ class matchOkController : UIViewController{
         
     }
     
-    
-    func JudgeActiveUser(){
-        let active_user = self.db.collection("ActiveUser")
-        active_user.whereField("temp", isEqualTo: "1").getDocuments(){ (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    //自分と違うuid を一つとってくる
-                    if(self.userID != document.documentID){
-                        self.pare_user = document.documentID
-                        self.RecivedUid(recived_uid: self.pare_user)
-                        print("相手のducumentIDは\(self.pare_user!)") //pare_uidは相手のUID
-                        return
+    func listenStart(){
+        let listener = db.collection("ActiveUser").whereField("temp", isEqualTo: "1")
+            .addSnapshotListener { querySnapshot, error in
+                guard let snapshot = querySnapshot else {
+                    print("Error fetching snapshots: \(error!)")
+                    return
+                }
+                
+                snapshot.documentChanges.forEach { diff in
+                    if (diff.type == .added) {
+                        let on_userID = diff.document.documentID
+                        print("New User: \(on_userID)")
+                        //自分と違うUIDだけを取ってくる
+                        if(diff.document.documentID != self.userID){
+                        self.CheckOnline(on_userID: on_userID)
+                        }
                     }
+                    
+                    if (diff.type == .removed) {
+                        print("Removed city: \(diff.document.documentID)")
+                    }
+                   
+                }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+5){
+            listener.remove()
+            print("listenがデパッチされました")
+            let ActiveUser = self.db.collection("ActiveUser").document(self.userID!)
+            ActiveUser.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let dataDescription = document.get("temp") as? String
+                    if(dataDescription == "1"){
+                       ActiveUser.updateData(["temp":FieldValue.delete()])
+                        self.non_onlinAlert()
+                    }
+                }else{
+                    self.non_onlinAlert()
                 }
             }
-            if(self.flag == 0){
-                print("オンライン状態ではない")
-                let contoroller = HomeController()
-                self.present(UINavigationController(rootViewController: contoroller),animated: true,completion:  nil)
-                return
-            }
-                self.JudgeActiveUser()
-        }
-    }
-    
-    func RecivedUid(recived_uid:String){
-        let ramdomchat = self.db.collection("RamdomChat")
-        ramdomchat.document(userID ?? "").setData(["recivedUID":recived_uid]) //自分のRamdomChatに取ってきた相手のUIDを入れる
-        //JudgeActiveUserで取ってきたUIDを参照し、相手に入ってるUIDが自分のUIDであるかを判定する
-        ramdomchat.document(recived_uid).getDocument{(document, error) in
-            let pare_uid = document?.get("recieveUID")
-            if pare_uid != nil{
-               // let pare_uid = document.get("recieveUID")
-                print("\(self.userID!)->\(recived_uid)")
-                self.CreateRoom(recived_uid:pare_uid as! String)
-            } else {
-                print("Document does not exist")
-                let contoroller = HomeController()
-                self.present(UINavigationController(rootViewController: contoroller),animated: true,completion:  nil)
-            }
-        }
-    }
-    
-    func CreateRoom(recived_uid:String){
-        if(recived_uid == userID){
-            let active_user = self.db.collection("ActiveUser").document(userID ?? "")
-            active_user.updateData(["temp":FieldValue.delete()])
-            self.activityIndicatorView.stopAnimating()
-            print("相手とマッチングしたので、トークルームへ移動します")
-        }else{
-            //JudgeActiveUserの関数へ戻りループ
-            print("マッチングに失敗")
-            let contoroller = HomeController()
-            self.present(UINavigationController(rootViewController: contoroller),animated: true,completion:  nil)
             
         }
+        
+    }
+  //tempの値が"1"なのかを判断する関数
+    func CheckOnline(on_userID:String){
+        let ActiveUser = self.db.collection("ActiveUser").document(on_userID)
+        ActiveUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.get("temp") as? String
+                print("tempの値は\(dataDescription ?? "NULL")")
+                if(dataDescription == "1"){
+                    print("ユーザ\(on_userID)はオンラインです")
+                    self.SetPareuid(on_userID: on_userID)
+                    self.CheckPareUser(on_userID: on_userID)
+                }else{
+                    print("ユーザ\(on_userID)はオフラインです")
+                    //もう一度マッチングさせる
+                    self.non_onlinAlert()
+                }
+            } else {
+                print("Document does not exist")
+                self.non_onlinAlert()
+            }
+        }
+
     }
     
+    // RamdomChat/自分のUID/のフィールドの値にマッチングした相手のUIDを入れる
+    func SetPareuid(on_userID:String){
+        let RamdomChat = self.db.collection("RamdomChat").document(self.userID!)
+        RamdomChat.setData(["pare":on_userID])
+        print("\(self.userID!)に相手のUID\(on_userID)をセットしました")
+    }
     
+    // RomdomChat/マッチングした相手のUID/　に存在するUIDが自分のUIDと同じなのか判定する
+    func CheckPareUser(on_userID:String){
+        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            let RamdomChat = self.db.collection("RamdomChat").document(on_userID)
+            RamdomChat.getDocument{(document,error) in
+                if let document = document, document.exists {
+                    let data = document.get("pare") as? String
+                    if(data == self.userID){
+                        print("相手(\(on_userID))とマッチングしたので、部屋に移ります")
+                        let ActiveUser = self.db.collection("ActiveUser").document(self.userID!)
+                        ActiveUser.updateData(["temp":FieldValue.delete()])
+                        let ChatController = chatController()
+                        self.activityIndicatorView.stopAnimating()
+                        self.present(UINavigationController(rootViewController: ChatController),animated: true , completion: nil)
+                    }else{
+                        print("マッチングに失敗しました")
+                        let ActiveUser = self.db.collection("ActiveUser").document(self.userID!)
+                        let RamdomChat = self.db.collection("RamdomChat").document(self.userID!)
+                        RamdomChat.updateData(["pare":FieldValue.delete()])
+                        ActiveUser.updateData(["temp":FieldValue.delete()])
+                        self.faultAlert()
+                    }
+                }else{
+                    // RomdomChat/マッチングした相手のUID/　に存在するUIDが自分と違う場合の処理
+                    print("マッチングに失敗しました")
+                    let ActiveUser = self.db.collection("ActiveUser").document(self.userID!)
+                    let RamdomChat = self.db.collection("RamdomChat").document(self.userID!)
+                    RamdomChat.updateData(["pare":FieldValue.delete()])
+                    ActiveUser.updateData(["temp":FieldValue.delete()])
+                    self.faultAlert()
+                }
+            }
+        }
+    }
+    
+    func faultAlert(){
+        let title = "マッチングできませんでした"
+        let button = "OK"
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let push_button = UIAlertAction(title: button, style: .cancel){
+            action in
+            let contoroller = HomeController()
+            self.present(UINavigationController(rootViewController: contoroller),animated: true,completion:  nil)
+        }
+        alert.addAction(push_button)
+        
+        present(alert,animated: true,completion: nil)
+    }
+    
+    func non_onlinAlert(){
+        let title = "オンラインの人がいませんでした"
+        let message = "時間を置いて、試してください"
+        let button = "OK"
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let push_button: UIAlertAction = UIAlertAction(title: button, style: .cancel){
+            action in
+            let contoroller = HomeController()
+            self.present(UINavigationController(rootViewController: contoroller),animated: true,completion:  nil)
+        }
+        alert.addAction(push_button)
+        
+        present(alert,animated: true,completion: nil)
+    }
+    
+  
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+   
+    
     
 }

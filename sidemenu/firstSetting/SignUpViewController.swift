@@ -40,6 +40,7 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     var signupMailTextField:UITextField! = {
         var textfield = UITextField(frame: CGRect(x: 50, y: UIScreen.main.bounds.height/3-60, width: 300, height:40))
         textfield.placeholder = "@ed.ritsumei.ac.jp"
+        
         return textfield
     }()
     
@@ -182,11 +183,6 @@ class SignUpViewController:UIViewController, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        let text = textField.text
-        self.signupMailTextField.text = text
-        self.signupPassTextField.text = text
-        self.NameTextField.text = text
-        
         return true
     }
     
